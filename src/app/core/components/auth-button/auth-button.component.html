@@ -1,0 +1,10 @@
+<!-- check this link to understand all the auth0 implementation : 
+https://auth0.com/blog/complete-guide-to-angular-user-authentication/
+-->
+
+<button mat-menu-item  *ngIf="isLoggedIn | async" mat-menu-item (click)="logout()">
+  <mat-icon>logout</mat-icon> {{ 'SIGN_OUT_NAVIGATION_BAR_BUTTON' | translate }}
+</button>
+<button mat-menu-item  *ngIf="!(isLoggedIn | async)" mat-menu-item (click)="login()">
+  <mat-icon>login</mat-icon> {{ 'SIGN_IN_NAVIGATION_BAR_BUTTON' | translate }}
+</button>

@@ -1,0 +1,36 @@
+<mat-select disableOptionCentering [placeholder]="placeholder" [formControl]="valueControl" [multiple]="true"
+    (opened)="focused = true;" (closed)="focused = false" #selectElement>
+    <!-- Search input searchElement.nativeElement.focus() -->
+    <input placeholder="Option filter" *ngIf="search" class="multiselect-search" matInput [formControl]="searchControl"
+        #searchElement>
+
+    <!-- Selected options chips display -->
+    <mat-select-trigger>
+        <mat-chip-list>
+
+            <mat-chip style="background-color: bisque;min-height: 14px;" disableRipple
+                *ngFor="let selected of valueControl.value" [selectable]="true" [removable]="true"
+                (removed)="removeOption(selected)">
+                {{ selected.label }}
+                <i class="multiselect-chip-remove" matChipRemove matRipple></i>
+            </mat-chip>
+
+
+
+        </mat-chip-list>
+    </mat-select-trigger>
+
+    <!-- All options -->
+    <div matRipple class="multiselect-selectall mat-option" *ngIf="selectAll && !searchControl.value">
+        <mat-checkbox color="primary" [(ngModel)]="isAllSelected" (change)="toggleSelection($event.checked)">
+            {{ selectdeselectAllLabel }}
+        </mat-checkbox>
+    </div>
+    <mat-option class="multiselect-option" [class.hidden]="option.isHidden"
+        *ngFor="let option of filteredOptions | async" [value]="option">
+        {{ option.label }}
+    </mat-option>
+</mat-select>
+<!-- Clear selection link -->
+<span *ngIf="!disabled && valueControl.value?.length > 0" (click)="clearSelection($event)"
+    class="multiselect-clear-selection">{{ clearSelectionLabel }}</span>

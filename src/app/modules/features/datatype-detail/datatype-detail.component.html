@@ -1,0 +1,46 @@
+<div *screenLarge class="container">
+  <!-- Title -->
+
+  <div class="titles">
+    <h1 class=" titles center">Data types</h1>
+  </div>
+
+  <!-- Tile -->
+  <div class="subtitles">
+    <h2 class="center">Tile: {{currentTile}}</h2>
+  </div>
+
+  <div class="titles">
+    <h3>Please select a datatype</h3>
+  </div>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title style="margin-top: 11px;">Datatypes</mat-card-title>
+    </mat-card-header>
+    <!-- Datatype -->
+    <div fxLayout="row" fxLayoutAlign="space-around stretch">
+      <div class="data-box" fxFlex="75%">
+        <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="25px">
+          <div *ngIf="(dataTypes$ | async) as dataFlows">
+            <div *ngIf="dataFlows.length == 0">
+              <div>No dataflow in the selected tile.</div>
+            </div>
+          </div>
+          <div *ngFor="let dataType of (dataTypes$ | async) ; let i = index" class="databox">
+            <div fxFlex="1 1 auto">
+              <mat-card (click)="onSelectDatatype(i, dataType)"
+                [ngClass]="{'card-selected mat-elevation-z4': selected === i} ">
+                <mat-list>
+                  <mat-list-item>
+                    <mat-icon>folder</mat-icon>
+                    <div matListItemTitle>&ensp;{{ dataType | uppercase }}&nbsp;</div>
+                  </mat-list-item>
+                </mat-list>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>

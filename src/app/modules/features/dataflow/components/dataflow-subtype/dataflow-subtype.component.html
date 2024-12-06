@@ -1,0 +1,55 @@
+<div *screenLarge class="container">
+  <!-- Title -->
+  <div class="titles">
+    <h1 class=" titles center">dataflows</h1>
+  </div>
+
+  <!-- Tile -->
+  <div class="subtitles">
+    <h2 class="center">Subtype : {{subtype}}</h2>
+  </div>
+
+  <div class="titles">
+    <h3>Please select a dataflow</h3>
+  </div>
+
+  <!-- Subscribe All -->
+  <div *ngIf="(dataflowIDs$ | async) as dataFlows">
+    <mat-card style="margin-bottom: 10px;" *ngIf="dataFlows.length != 0">
+      <mat-card-header>
+        <mat-card-title style="margin-top: 11px;">Dataflows</mat-card-title>
+      </mat-card-header>
+
+      <!-- Subtypes -->
+      <div fxLayout="row" fxLayoutAlign="space-around stretch">
+        <div class="data-box" fxFlex="75%">
+          <div *ngIf="(dataflowIDs$ | async) as dataFlows">
+            <div *ngIf="dataFlows.length == 0">
+              <div class="center">No dataflow.</div>
+            </div>
+          </div>
+          <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="25px">
+            <div *ngFor="let id of (dataflowIDs$ | async) ; let i = index" class="databox">
+              <div>
+                <mat-card (click)="onSelectCard(id) " [ngClass]="{'card-selected mat-elevation-z4': selected === i} ">
+                  <mat-list>
+                    <mat-list-item>
+                      <mat-icon matListItemIcon>description</mat-icon>
+                      <div matListItemTitle><b>&ensp;ID:</b>&nbsp;</div>
+                      <div matListItemLine>{{id}}</div>
+                    </mat-list-item>
+                  </mat-list>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <mat-card-actions class="center">
+        <button class="button-mat-card-actions" mat-raised-button (click)="showTopic()">My subscriptions</button>
+        <button class="button-mat-card-actions" mat-raised-button color="primary" (click)="subscribe()">Subscribe to
+          all</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

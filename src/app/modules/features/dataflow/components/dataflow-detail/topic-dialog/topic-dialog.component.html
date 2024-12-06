@@ -1,0 +1,51 @@
+<!-- Content -->
+<mat-card>
+  <button *ngIf="topicDialogInModale" style="float: right; margin-right: 5px; background-color:white" mat-mini-fab
+    (click)="cancel()"><mat-icon>close</mat-icon></button>
+  <mat-card-header>
+    <mat-card-title style="margin-top: 11px;">My subscriptions</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div fxLayoutAlign="center center" style="height: 50%; max-height: 80%;">
+      <div *ngIf="(topicData$ | async)?.length == 0">
+        <h3 class="titles">
+          <mat-card-title class="titles">You have no subscription yet.</mat-card-title>
+        </h3>
+
+      </div>
+      <mat-dialog-content style="width: 100%;">
+        <div *ngFor="let topic of (topicData$ | async); let i = index ">
+          <mat-card>
+            <div class="row" style="display: inline-flex; text-align: center;">
+              <div style="width: 60%; margin: auto;" class="container" (click)="detailTopic(topic)"><label
+                  style="cursor: pointer;">{{
+                  topic
+                  }}</label></div>
+              <div style="width: 40%;">
+                <mat-checkbox style="margin-left: 15px;" (click)="$event.stopPropagation()"
+                  (change)="$event ? toggle(topic, $event) : null" [checked]="exists(topic)">
+
+                </mat-checkbox>
+                <button mat-mini-fab color="" (click)="monitoring(topic)"
+                  style="margin-left: 15px;"><mat-icon>legend_toggle</mat-icon></button>
+                <button mat-mini-fab class="delete-minifab-button"
+                  (click)="delete(topic,X_userInfo)"><mat-icon>delete</mat-icon></button>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </mat-dialog-content>
+    </div>
+  </mat-card-content>
+
+  <!-- Buttons -->
+  <div mat-dialog-actions align="end" style="margin-right: 5%; margin-top: 35px;     position: sticky; 
+    bottom: 0;">
+    <mat-checkbox aria-label="Select All" [checked]="isChecked()" [indeterminate]="isIndeterminate()"
+      (change)="$event ? toggleAll($event) : null">
+      Select All
+    </mat-checkbox>
+    <button mat-button mat-dialog-close (click)="deleteSelected()"><mat-icon color="warn">delete</mat-icon>Delete
+      Selected</button>
+  </div>
+</mat-card>

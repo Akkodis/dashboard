@@ -1,0 +1,41 @@
+<p>help works!</p>
+<div class="container">
+    <h2 class="text-center mb-5" icon="import_contacts"> User Manual </h2>
+</div>
+    <mat-card class="contact-card" >
+        <mat-card-title align="center">Contact US </mat-card-title>
+        <ul class="help-social-list" align="center">
+          <a href="#"><mat-icon color="primary" >facebook</mat-icon></a>
+          <a href="#"><mat-icon color="primary">alternate_email</mat-icon></a>
+          <a href="#"><mat-icon color="primary" svgIcon="twitter"></mat-icon></a>
+        </ul>
+     <br><br>
+        <form class="contact-form" align="center">
+            <table class="form-full-width" cellspacing="0"><tr>
+              <td><mat-form-field class="form-full-width" appearance="fill">
+                <mat-label>First name</mat-label>
+                <input matInput placeholder="Ex. San Francisco">
+              </mat-form-field></td>
+              <td><mat-form-field class="form-full-width" appearance="fill">
+                <mat-label>Last name </mat-label>
+                <input matInput placeholder="Ex. California">
+              </mat-form-field></td>
+            </tr></table>
+            <table class="form-full-width" cellspacing="0"><tr>
+                <td><mat-form-field class="form-full-width" appearance="fill">
+                    <mat-label>Email </mat-label>
+                    <input type="email" matInput required>
+                    <input matInput placeholder="Ex. example@text.com">
+                  </mat-form-field></td>
+                </tr></table>
+                <table class="form-full-width" cellspacing="0"><tr>
+                    <td> <mat-form-field class="form-full-width" appearance="fill">
+                  <mat-label>Comment </mat-label>
+                  <textarea matInput placeholder="Ex. 100 Main St"></textarea>
+                </mat-form-field></td>
+            </tr></table>
+            </form>
+        <mat-card-actions align="end">
+          <button mat-raised-button color="primary" >SEND </button>
+        </mat-card-actions>
+      </mat-card>

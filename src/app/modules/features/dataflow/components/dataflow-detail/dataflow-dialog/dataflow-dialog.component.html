@@ -1,0 +1,24 @@
+<div class="container">
+  <h1 class="center">Choose an instance type</h1>
+  <div fxLayout="row wrap" fxLayoutAlign="center center">
+    <div *ngFor="let sla of (listSla$ | async)">
+      <div fxFlex="1 1 auto">
+        <mat-card>
+          <mat-card-content>
+            <mat-card-title-group>
+              <mat-card-title >{{sla.type_name | titlecase }}</mat-card-title>
+              <mat-card-subtitle>CPU: {{sla.cpu}}</mat-card-subtitle>
+              <mat-card-subtitle>Memory: {{sla.memory}} GB</mat-card-subtitle>
+            </mat-card-title-group>
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <button mat-button [mat-dialog-close]="sla">Select</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <mat-card-actions align="end">
+    <button mat-button (click)="cancel()">Cancel</button>
+  </mat-card-actions>
+</div>

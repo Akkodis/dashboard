@@ -1,0 +1,516 @@
+{
+    "1202200101311": [
+        {
+            "dataFlowId": "id:3508",
+            "dataInfo": {
+                "dataFormat": "dataFormat",
+                "dataSampleRate": 0.8008281904610115,
+                "dataflowDirection": "dataflowDirection",
+                "extraAttributes": "extraAttributes"
+            },
+            "dataSourceInfo": {
+                "sourceId": "sourceId",
+                "sourceLocationInfo": {
+                    "locationCountry": "locationCountry",
+                    "locationLatitude": 9.301444243932576,
+                    "locationLongitude": 3.616076749251911,
+                    "locationQuadkey": "locationQuadkey"
+                },
+                "sourceType": 1,
+                "timeLastUpdate": 5,
+                "timeRegistration": 5,
+                "timeStratumLevel": 7,
+                "timeZone": 2
+            },
+            "dataTypeInfo": {
+                "dataSubType": "dataSubType",
+                "dataType": "cits"
+            },
+            "licenseInfo": {
+                "licenseGeolimit": 6,
+                "licenseType": "licenseType"
+            },
+            "quality": 0
+        },
+        {
+            "dataFlowId": "id:3509",
+            "dataInfo": {
+                "dataFormat": "dataFormat",
+                "dataSampleRate": 0.8008281904610115,
+                "dataflowDirection": "dataflowDirection",
+                "extraAttributes": "extraAttributes"
+            },
+            "dataSourceInfo": {
+                "sourceId": "sourceId",
+                "sourceLocationInfo": {
+                    "locationCountry": "locationCountry",
+                    "locationLatitude": 9.301444243932576,
+                    "locationLongitude": 3.616076749251911,
+                    "locationQuadkey": "locationQuadkey"
+                },
+                "sourceType": 1,
+                "timeLastUpdate": 5,
+                "timeRegistration": 5,
+                "timeStratumLevel": 7,
+                "timeZone": 2
+            },
+            "dataTypeInfo": {
+                "dataSubType": "dataSubType",
+                "dataType": "video"
+            },
+            "licenseInfo": {
+                "licenseGeolimit": 6,
+                "licenseType": "licenseType"
+            },
+            "quality": 0
+        },
+        {
+            "dataFlowId": "id:3510",
+            "dataInfo": {
+                "dataFormat": "dataFormat",
+                "dataSampleRate": 0.8008281904610115,
+                "dataflowDirection": "dataflowDirection",
+                "extraAttributes": "extraAttributes"
+            },
+            "dataSourceInfo": {
+                "sourceId": "sourceId",
+                "sourceLocationInfo": {
+                    "locationCountry": "locationCountry",
+                    "locationLatitude": 9.301444243932576,
+                    "locationLongitude": 3.616076749251911,
+                    "locationQuadkey": "locationQuadkey"
+                },
+                "sourceType": 1,
+                "timeLastUpdate": 5,
+                "timeRegistration": 5,
+                "timeStratumLevel": 7,
+                "timeZone": 2
+            },
+            "dataTypeInfo": {
+                "dataSubType": "dataSubType",
+                "dataType": "image"
+            },
+            "licenseInfo": {
+                "licenseGeolimit": 6,
+                "licenseType": "licenseType"
+            },
+            "quality": 0
+        },
+        {
+            "dataFlowId": "id:3511",
+            "dataInfo": {
+                "dataFormat": "dataFormat",
+                "dataSampleRate": 0.8008281904610115,
+                "dataflowDirection": "dataflowDirection",
+                "extraAttributes": "extraAttributes"
+            },
+            "dataSourceInfo": {
+                "sourceId": "sourceId",
+                "sourceLocationInfo": {
+                    "locationCountry": "locationCountry",
+                    "locationLatitude": 9.301444243932576,
+                    "locationLongitude": 3.616076749251911,
+                    "locationQuadkey": "locationQuadkey"
+                },
+                "sourceType": 1,
+                "timeLastUpdate": 5,
+                "timeRegistration": 5,
+                "timeStratumLevel": 7,
+                "timeZone": 2
+            },
+            "dataTypeInfo": {
+                "dataSubType": "dataSubType",
+                "dataType": "Text"
+            },
+            "licenseInfo": {
+                "licenseGeolimit": 6,
+                "licenseType": "licenseType"
+            },
+            "quality": 0
+        }
+    ],
+    "0313331232": [
+        {
+            "dataFlowId": "id:3512",
+            "dataInfo": {
+                "dataFormat": "dataFormat",
+                "dataSampleRate": 0.8008281904610115,
+                "dataflowDirection": "dataflowDirection",
+                "extraAttributes": "extraAttributes"
+            },
+            "dataSourceInfo": {
+                "sourceId": "sourceId",
+                "sourceLocationInfo": {
+                    "locationCountry": "locationCountry",
+                    "locationLatitude": 9.301444243932576,
+                    "locationLongitude": 3.616076749251911,
+                    "locationQuadkey": "locationQuadkey"
+                },
+                "sourceType": 1,
+                "timeLastUpdate": 5,
+                "timeRegistration": 5,
+                "timeStratumLevel": 7,
+                "timeZone": 2
+            },
+            "dataTypeInfo": {
+                "dataSubType": "dataSubType",
+                "dataType": "Text"
+            },
+            "licenseInfo": {
+                "licenseGeolimit": 6,
+                "licenseType": "licenseType"
+            },
+            "quality": 0
+        },
+        {
+            "dataFlowId": "id:3513",
+            "dataInfo": {
+                "dataFormat": "dataFormat",
+                "dataSampleRate": 0.8008281904610115,
+                "dataflowDirection": "dataflowDirection",
+                "extraAttributes": "extraAttributes"
+            },
+            "dataSourceInfo": {
+                "sourceId": "sourceId",
+                "sourceLocationInfo": {
+                    "locationCountry": "locationCountry",
+                    "locationLatitude": 9.301444243932576,
+                    "locationLongitude": 3.616076749251911,
+                    "locationQuadkey": "locationQuadkey"
+                },
+                "sourceType": 1,
+                "timeLastUpdate": 5,
+                "timeRegistration": 5,
+                "timeStratumLevel": 7,
+                "timeZone": 2
+            },
+            "dataTypeInfo": {
+                "dataSubType": "dataSubType",
+                "dataType": "Audio"
+            },
+            "licenseInfo": {
+                "licenseGeolimit": 6,
+                "licenseType": "licenseType"
+            },
+            "quality": 0
+        },
+        {
+            "dataFlowId": "id:3514",
+            "dataInfo": {
+                "dataFormat": "dataFormat",
+                "dataSampleRate": 0.8008281904610115,
+                "dataflowDirection": "dataflowDirection",
+                "extraAttributes": "extraAttributes"
+            },
+            "dataSourceInfo": {
+                "sourceId": "sourceId",
+                "sourceLocationInfo": {
+                    "locationCountry": "locationCountry",
+                    "locationLatitude": 9.301444243932576,
+                    "locationLongitude": 3.616076749251911,
+                    "locationQuadkey": "locationQuadkey"
+                },
+                "sourceType": 1,
+                "timeLastUpdate": 5,
+                "timeRegistration": 5,
+                "timeStratumLevel": 7,
+                "timeZone": 2
+            },
+            "dataTypeInfo": {
+                "dataSubType": "dataSubType",
+                "dataType": "Audio"
+            },
+            "licenseInfo": {
+                "licenseGeolimit": 6,
+                "licenseType": "licenseType"
+            },
+            "quality": 0
+        }
+    ],
+    "12022301011102": [
+        {
+            "dataFlowId": "id:3515",
+            "dataInfo": {
+                "dataFormat": "dataFormat",
+                "dataSampleRate": 0.8008281904610115,
+                "dataflowDirection": "dataflowDirection",
+                "extraAttributes": "extraAttributes"
+            },
+            "dataSourceInfo": {
+                "sourceId": "sourceId",
+                "sourceLocationInfo": {
+                    "locationCountry": "locationCountry",
+                    "locationLatitude": 9.301444243932576,
+                    "locationLongitude": 3.616076749251911,
+                    "locationQuadkey": "locationQuadkey"
+                },
+                "sourceType": 1,
+                "timeLastUpdate": 5,
+                "timeRegistration": 5,
+                "timeStratumLevel": 7,
+                "timeZone": 2
+            },
+            "dataTypeInfo": {
+                "dataSubType": "dataSubType",
+                "dataType": "Text"
+            },
+            "licenseInfo": {
+                "licenseGeolimit": 6,
+                "licenseType": "licenseType"
+            },
+            "quality": 0
+        },
+        {
+            "dataFlowId": "id:3516",
+            "dataInfo": {
+                "dataFormat": "dataFormat",
+                "dataSampleRate": 0.8008281904610115,
+                "dataflowDirection": "dataflowDirection",
+                "extraAttributes": "extraAttributes"
+            },
+            "dataSourceInfo": {
+                "sourceId": "sourceId",
+                "sourceLocationInfo": {
+                    "locationCountry": "locationCountry",
+                    "locationLatitude": 9.301444243932576,
+                    "locationLongitude": 3.616076749251911,
+                    "locationQuadkey": "locationQuadkey"
+                },
+                "sourceType": 1,
+                "timeLastUpdate": 5,
+                "timeRegistration": 5,
+                "timeStratumLevel": 7,
+                "timeZone": 2
+            },
+            "dataTypeInfo": {
+                "dataSubType": "dataSubType",
+                "dataType": "image"
+            },
+            "licenseInfo": {
+                "licenseGeolimit": 6,
+                "licenseType": "licenseType"
+            },
+            "quality": 0
+        }
+    ],
+    "12022311132": [
+        {
+            "dataFlowId": "id:3517",
+            "dataInfo": {
+                "dataFormat": "dataFormat",
+                "dataSampleRate": 0.8008281904610115,
+                "dataflowDirection": "dataflowDirection",
+                "extraAttributes": "extraAttributes"
+            },
+            "dataSourceInfo": {
+                "sourceId": "sourceId",
+                "sourceLocationInfo": {
+                    "locationCountry": "locationCountry",
+                    "locationLatitude": 9.301444243932576,
+                    "locationLongitude": 3.616076749251911,
+                    "locationQuadkey": "locationQuadkey"
+                },
+                "sourceType": 1,
+                "timeLastUpdate": 5,
+                "timeRegistration": 5,
+                "timeStratumLevel": 7,
+                "timeZone": 2
+            },
+            "dataTypeInfo": {
+                "dataSubType": "dataSubType",
+                "dataType": "image"
+            },
+            "licenseInfo": {
+                "licenseGeolimit": 6,
+                "licenseType": "licenseType"
+            },
+            "quality": 0
+        }
+    ],
+    "dataTypes": [
+        "cits",
+        "video",
+        "Audio",
+        "Text",
+        "image"
+    ],
+    "SubtypeCits": [
+        "CAM",
+        "CPM",
+        "DENM",
+        "MAPEM",
+        "SPATEM",
+        "SREM",
+        "SSEM"
+    ],
+    "SubtypeCitsquery": [
+        "235",
+        "236",
+        "425"
+    ],
+    "235": {
+        "dataFlowId": "235",
+        "dataInfo": {
+            "dataFormat": "dataFormat",
+            "dataSampleRate": 0.8008281904610115,
+            "dataflowDirection": "dataflowDirection",
+            "extraAttributes": "extraAttributes"
+        },
+        "dataSourceInfo": {
+            "sourceId": "sourceId",
+            "sourceLocationInfo": {
+                "locationCountry": "locationCountry",
+                "locationLatitude": 9.301444243932576,
+                "locationLongitude": 3.616076749251911,
+                "locationQuadkey": "locationQuadkey"
+            },
+            "sourceType": 1,
+            "timeLastUpdate": 5,
+            "timeRegistration": 5,
+            "timeStratumLevel": 7,
+            "timeZone": 2
+        },
+        "dataTypeInfo": {
+            "dataSubType": "dataSubType",
+            "dataType": "cits"
+        },
+        "licenseInfo": {
+            "licenseGeolimit": 6,
+            "licenseType": "licenseType"
+        },
+        "quality": 0
+    },
+    "236": [],
+    "425": [],
+    "properties-12022301011102-cits": {
+        "counter": [
+            120
+        ],
+        "dataFormat": [
+            "string"
+        ],
+        "dataSampleRate": [
+            5
+        ],
+        "dataSubType": [
+            "string"
+        ],
+        "dataflowDirection": [
+            "string"
+        ],
+        "extraAttributes": [
+            "string"
+        ],
+        "licenseGeolimit": [
+            12345556
+        ],
+        "licenseType": [
+            "string"
+        ],
+        "locationCountry": [
+            "string"
+        ],
+        "locationLatitude": [
+            1526625524442,
+            1144
+        ],
+        "locationLongitude": [
+            7447585852,
+            41414
+        ],
+        "locationQuadkey": [
+            "string"
+        ],
+        "quality": [
+            0
+        ],
+        "sourceId": [
+            "string"
+        ],
+        "sourceType": [
+            1255
+        ],
+        "timeStratumLevel": [
+            2322
+        ],
+        "timeZone": [
+            1255
+        ]
+    },
+    "properties-12022301011102-video": {
+        "counter": [],
+        "dataFormat": [],
+        "dataSampleRate": [],
+        "dataSubType": [],
+        "dataflowDirection": [],
+        "extraAttributes": [],
+        "licenseGeolimit": [],
+        "licenseType": [],
+        "locationCountry": [],
+        "locationLatitude": [],
+        "locationLongitude": [],
+        "locationQuadkey": [],
+        "quality": [],
+        "sourceId": [],
+        "sourceType": [],
+        "timeStratumLevel": [],
+        "timeZone": []
+    },
+    "properties-12022301011102-Audio": {
+        "counter": [],
+        "dataFormat": [],
+        "dataSampleRate": [],
+        "dataSubType": [],
+        "dataflowDirection": [],
+        "extraAttributes": [],
+        "licenseGeolimit": [],
+        "licenseType": [],
+        "locationCountry": [],
+        "locationLatitude": [],
+        "locationLongitude": [],
+        "locationQuadkey": [],
+        "quality": [],
+        "sourceId": [],
+        "sourceType": [],
+        "timeStratumLevel": [],
+        "timeZone": []
+    },
+    "properties-12022301011102-Text": {
+        "counter": [],
+        "dataFormat": [],
+        "dataSampleRate": [],
+        "dataSubType": [],
+        "dataflowDirection": [],
+        "extraAttributes": [],
+        "licenseGeolimit": [],
+        "licenseType": [],
+        "locationCountry": [],
+        "locationLatitude": [],
+        "locationLongitude": [],
+        "locationQuadkey": [],
+        "quality": [],
+        "sourceId": [],
+        "sourceType": [],
+        "timeStratumLevel": [],
+        "timeZone": []
+    },
+    "properties-12022301011102-image": {
+        "counter": [],
+        "dataFormat": [],
+        "dataSampleRate": [],
+        "dataSubType": [],
+        "dataflowDirection": [],
+        "extraAttributes": [],
+        "licenseGeolimit": [],
+        "licenseType": [],
+        "locationCountry": [],
+        "locationLatitude": [],
+        "locationLongitude": [],
+        "locationQuadkey": [],
+        "quality": [],
+        "sourceId": [],
+        "sourceType": [],
+        "timeStratumLevel": [],
+        "timeZone": []
+    }
+}

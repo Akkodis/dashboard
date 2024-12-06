@@ -1,0 +1,119 @@
+@import "../../../../styles/app-colors.scss";
+
+
+.profile-card {
+  max-width: 400px;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+}
+
+.profile-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+
+
+.child-1 {
+  flex: 1 auto;
+
+}
+
+.child-2 {
+  flex: 1 auto;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  margin-top: 3%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 1%;
+  //  flex-direction: col;
+  //  height:200px;
+  //  width:500px;
+  //  border:2px solid red;
+}
+
+.user-profile-image {
+  background-image: url('https://res.cloudinary.com/cloud-5gemta/image/upload/v1633083350/samples/people/smiling-man.jpg');
+  //background-image: url('https://res.cloudinary.com/cloud-5gemta/image/upload/v1633083350/samples/people/smiling-man.jpg');
+  background-size: cover;
+
+}
+
+.profile_infos {
+  // width: 100%;
+  // min-width: 400px;
+  // max-width: 450px;
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: space-between;
+  padding: 16px 32px;
+  // margin-bottom: 8px;
+  // border-radius: 2px;
+  // background-color: #EEEEEE;
+}
+
+mat-card {
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-size: 1.5rem !important;
+  color: $main-color2 !important;
+}
+
+.titles h1 {
+  text-align: center !important;
+  font-size: 25px !important;
+  text-transform: uppercase !important;
+  color: #222 !important;
+  letter-spacing: 1px !important;
+  font-family: "Playfair Display", serif !important;
+  font-weight: 200 !important;
+  margin-top: 45px !important;
+}
+
+
+.centred-mat-image {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.centred-card-title {
+  text-align: center;
+  margin-top: 1% !important;
+}
+
+.mat-actions {
+  color: $main-color1;
+  text-align: center;
+
+  button {
+    font-weight: bolder;
+
+  }
+}
+
+.card-content {
+  font-size: 14px;
+  text-align: center;
+
+}
+
+.center {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

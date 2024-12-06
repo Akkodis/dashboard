@@ -1,0 +1,17 @@
+<mat-toolbar class="titles">
+  <mat-toolbar-row>
+    <span>Profile</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="titles">
+  <h1 class="center">Your profile</h1>
+</div>
+<div class="center">
+  <div class="container">
+    <app-keycloak-user-information class="child-1" [userName]="username" [email]="email" [firstName]="firstName"
+      [lastName]="lastName"></app-keycloak-user-information>
+    <div></div>
+    <div></div>
+    <app-business-information class="child-1"></app-business-information>
+  </div>
+</div>

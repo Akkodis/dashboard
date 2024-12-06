@@ -1,0 +1,150 @@
+<div class="container">
+  <div class="titles">
+    <h1 class="center">Monitoring</h1>
+  </div>
+
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" (selectedTabChange)="onSelectedTabChanged($event)">
+    <mat-tab label="Data volume">
+      <div fxLayout="row" fxLayoutAlign="space-around stretch">
+        <div class="data-box" fxFlex="75%">
+          <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="25px">
+            <mat-card class="chartDiv">
+              <mat-card-title class="center">Total volume of consumed data</mat-card-title>
+              <mat-card-content class="center">
+                <mat-label mat-stroked-button disabled="" style="color: rgb(44, 39, 39); font-size: 20px;">
+                  <strong>{{totalVolume |
+                    number:'1.2-2':'en-GB'}}</strong>
+                  MB
+                </mat-label>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+          <div>
+            <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center"
+              (selectedTabChange)="onSelectedDataVolumeSubTabChanged($event)">
+              <mat-tab [label]="PerTopicChartTextLabel">
+                <div class="chart-container">
+                  <div fxLayout="row" fxLayoutAlign="center">
+                    <mat-form-field class="topic-select">
+                      <mat-label>Select topic</mat-label>
+                      <mat-select [(ngModel)]="selectedTopic" (ngModelChange)="updateTopicConsumedChart(selectedTopic)">
+                        <mat-option [value]="allTopicLabel">{{allTopicLabel}}</mat-option>
+                        <mat-option *ngFor="let topic of topics" [value]="topic">
+                          {{ topic }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <mat-label>Select Days</mat-label>
+                      <mat-select [(ngModel)]="selectedDaysTopic"
+                        (ngModelChange)="updateTopicChartTime(selectedDaysTopic)">
+                        <mat-option *ngFor="let days of availableDays" [value]="days.value">
+                          {{ days.label }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div *ngIf="topics" fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="25px">
+                    <mat-card class="chartDiv">
+                      <mat-card-title class="center">Volume of consumed data per active topic in MB</mat-card-title>
+                      <canvas id="dataVolumeChart"></canvas>
+                    </mat-card>
+                  </div>
+                </div>
+              </mat-tab>
+
+              <mat-tab [label]="TotalConsumedChartTextLabel">
+                <div class="chart-container">
+                  <div fxLayout="row" fxLayoutAlign="center">
+                    <mat-form-field>
+                      <mat-label>Select Days</mat-label>
+                      <mat-select [(ngModel)]="selectedDaysTotalVolume"
+                        (ngModelChange)="updateTotalDataVolumeChart(selectedDaysTotalVolume)">
+                        <mat-option *ngFor="let days of availableDays" [value]="days.value">
+                          {{ days.label }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="center">
+                    <mat-card class="chartDiv">
+                      <mat-card-title class="center">Total volume of consumed data in MB</mat-card-title>
+                      <canvas id="dataVolumeTotalChart"></canvas>
+                    </mat-card>
+                  </div>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Cost">
+      <div fxLayout="row" fxLayoutAlign="space-around stretch">
+        <div class="data-box" fxFlex="75%">
+          <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="25px">
+            <mat-card class="chartDiv">
+              <mat-card-title class="center">Current total cost</mat-card-title>
+              <mat-card-content class="center">
+                <mat-label mat-stroked-button disabled=""
+                  style="color: rgb(44, 39, 39); font-size: 20px;"><strong>{{totalCost | number :
+                    '1.2-2'}}</strong> €</mat-label>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+          <div>
+            <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center"
+              (selectedTabChange)="onSelectedCostSubTabChanged($event)">
+              <mat-tab [label]="dailyCostTextLabel">
+                <div class="chart-container">
+                  <div fxLayout="row" fxLayoutAlign="center">
+                    <mat-form-field>
+                      <mat-label>Select period</mat-label>
+                      <mat-select [(ngModel)]="selectedDaysTopic"
+                        (ngModelChange)="updateDailyCostChartTime(selectedDaysTopic)">
+                        <mat-option *ngFor="let days of availableDays" [value]="days.value">
+                          {{ days.label }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div *ngIf="topics" fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="25px">
+                    <mat-card class="chartDiv">
+                      <mat-card-title class="center">Daily cost in €</mat-card-title>
+                      <canvas id="costChart"></canvas>
+                    </mat-card>
+                  </div>
+                </div>
+              </mat-tab>
+
+              <mat-tab [label]="accumulatedCostTextLabel">
+                <div class="chart-container">
+                  <div fxLayout="row" fxLayoutAlign="center">
+                    <mat-form-field>
+                      <mat-label>Select period</mat-label>
+                      <mat-select [(ngModel)]="selectedDaysTotalVolume"
+                        (ngModelChange)="updateTotalCostChart(selectedDaysTotalVolume)">
+                        <mat-option *ngFor="let days of availableDays" [value]="days.value">
+                          {{ days.label }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="center">
+                    <mat-card class="chartDiv">
+                      <mat-card-title class="center">Accumulated cost in €</mat-card-title>
+                      <canvas id="costTotalChart"></canvas>
+                    </mat-card>
+                  </div>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

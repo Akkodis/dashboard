@@ -1,0 +1,71 @@
+{
+    "APP_NAME": "5GMETA",
+    "APP_TOOLBAR_TITLE": "5GMETA dashboard",
+
+    "LOGIN_BUTTON": "SIGN IN",
+    "LOGIN_LABEL": "Sign in",
+    "DONT_HAVE_AN_ACCOUNT_LABEL": "Don't have an Account?",
+    "SIGN_UP_BUTTON": "Sign up",
+
+    "REGISTER_BUTTON": "REGISTER",
+    "REGISTER_LABEL": "Create account",
+
+    "PROFILE_NAVIGATION_BAR_BUTTON": "Profile",
+    "SIGN_OUT_NAVIGATION_BAR_BUTTON": "Sign Out",
+    "SIGN_IN_NAVIGATION_BAR_BUTTON": "Sign In",
+
+    "CUSTOMERS_SUB_HEADER": "Customers",
+    "ACCOUNTS_LIST_ITEM": "Accounts",
+    "CONTACTS_LIST_ITEM": "Contacts",
+    "CONTACTS_US_FOOTER": "Contact us",
+    "TITLE_WHY5GMETA_FOOTER" : "Why 5GMETA ?",
+    "ABOUT_US" : "About us",
+    "TERMS_N_CONDITIONS" : "Terms & Conditions",
+    "PRIVACY_POLICY" : "Privacy Policy",
+
+    "ACCOUNTS_HEADER": "Accounts",
+    "ACTIVITIES_HEADER": "Activities",
+    "CONTACTS_HEADER": "Contacts",
+    "DASHBOARDS_HEADER": "Dashboard",
+    "OPPORTUNITIES_HEADER": "Opportunities",
+
+    "ACCOUNT_HEADER": "Account",
+    "PROFILE_HEADER": "Profile",
+
+    "SALES_ACTIVITY_DASHBOARD_HEADER": "Sales Activity Dashboard",
+
+    "DEACTIVATE": "DEACTIVATE",
+    "EMAIL_A_LINK": "EMAIL A LINK",
+    "FULL_SCREEN": "FULL SCREEN",
+    "NEW": "NEW",
+    "REFRESH": "REFRESH",
+    "RUN_REPORT": "RUN REPORT",
+    "SAVE": "SAVE",
+    "SAVE_AS": "SAVE AS",
+    "SAVE_AND_CLOSE": "SAVE & CLOSE",
+    "SET_AS_DEFAULT": "SET AS DEFAULT",
+    "WIDGETS": "WIDGETS",
+
+    "FULL_NAME": "FULL NAME",
+    "EMAIL": "EMAIL",
+    "COMPANY_NAME": "COMPANY NAME",
+    "BUSINESS_PHONE": "BUSINESS PHONE",
+
+    "ACCOUNT_NAME": "ACCOUNT NAME",
+    "MAIN_PHONE": "MAIN PHONE",
+    "PRIMARY_CONTACT": "PRIMARY CONTACT",
+    "EMAIL_PRIMARY_CONTACT": "EMAIL (PRIMARY CONTACT)",
+
+
+    "ACCEPT_ACTION_BAR_BUTTON": "ACCEPT",
+    "CLAIM_ACTION_BAR_BUTTON": "CLAIM",
+    "COMPLETE_ACTION_BAR_BUTTON": "COMPLETE",
+    "ESCALATE_ACTION_BAR_BUTTON": "ESCALATE",
+    "REJECT_ACTION_BAR_BUTTON": "REJECT",
+    "SAVE_ACTION_BAR_BUTTON": "SAVE",
+
+    "START_BUTTON": "START",
+    "CANCEL_BUTTON": "CANCEL",
+    "CHANGE_PASSWORD": "CHANGE PASSWORD"
+
+  }

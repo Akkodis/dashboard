@@ -1,0 +1,80 @@
+<mat-card class="form">
+    <div class="titles">
+
+    </div>
+    <div *ngIf="formulaireCaption=='Save'" style="text-align:center; color: rgb(159, 193, 216);">
+        <mat-card-title>Please complete your profile</mat-card-title>
+    </div>
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+        <mat-label class="label">
+            Address
+        </mat-label>
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Street Number" formControlName="streetNumber"
+                        ngModel={{formGroup.controls.streetNumber.value}}>
+                    <mat-error *ngIf="formGroup.controls['streetNumber'].hasError('required')">
+                        Street Number is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Street Name" formControlName="street"
+                        ngModel={{formGroup.controls.street.value}}>
+                    <mat-error *ngIf="formGroup.controls['streetNumber'].hasError('required')">
+                        Street Name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="City" formControlName="city" ngModel={{formGroup.controls.city.value}}>
+                    <mat-error *ngIf="formGroup.controls['city'].hasError('required')">
+                        City is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput #postalCode maxlength="5" placeholder="Postal Code" type="string"
+                            formControlName="postalCode" ngModel={{formGroup.controls.postalCode.value}}>
+                        <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <mat-label class="label">
+            Preferred licenses
+        </mat-label>
+        <mat-form-field class="form-element">
+            <mat-label>Geolimit*</mat-label>
+            <app-custom-mat-multiselect formControlName="geolimit" [options]="geolimitOptions" [search]="true"
+                [currentGeoLimitOptionsSelected]="currentGeoLimitOptionsSelected" [selectAll]="true"
+                [selectdeselectAllLabel]="selectdeselectAllLabelGeolimitOptions"
+                [clearSelectionLabel]="'Clear selection'">
+            </app-custom-mat-multiselect>
+        </mat-form-field>
+        <mat-form-field class="form-element">
+            <mat-label>Commercial*</mat-label>
+            <app-custom-mat-multiselect formControlName="commercial" [options]="commercialOptions" [search]="true"
+                [currentCommercialOptionsSelected]="currentCommercialOptionsSelected" [selectAll]="true"
+                [selectdeselectAllLabel]="selectdeselectAllLabelCommercialOptions"
+                [clearSelectionLabel]="'Clear selection'"></app-custom-mat-multiselect>
+        </mat-form-field>
+        <div class="form-element">
+            <div class="row">
+                <button mat-raised-button color="warn" (click)="closeform()" class="button">Cancel</button>
+
+                <button mat-raised-button color="primary" type="submit" class="button"
+                    style="margin-left: 5px;">{{formulaireCaption}}</button>
+
+            </div>
+
+        </div>
+    </form>
+</mat-card>

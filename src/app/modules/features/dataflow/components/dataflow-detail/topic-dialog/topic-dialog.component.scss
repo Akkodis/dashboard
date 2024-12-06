@@ -1,0 +1,74 @@
+.microlight {
+  display: inline-block;
+  font-family: monospace;
+  background-color: #263238;
+  color: #AABBC3;
+  text-align: center;
+  vertical-align: middle;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+  border-radius: 0.2em;
+  padding: 10px;
+  white-space: pre;
+}
+
+.mat-card {
+  margin: 10px !important;
+  padding: 0px !important;
+
+}
+
+.row {
+  display: inline-flex;
+  width: 100%;
+}
+
+.delete-minifab-button {
+  background-color: #ce1111;
+  width: 40px;
+  height: 40px;
+  margin-left: 15px;
+  color: white;
+}
+
+.mat-card-header {
+  background: #12121212;
+  padding: 5px;
+  color: rgb(107, 14, 154);
+}
+
+.mat-card-content {
+  padding: 10px;
+  // cursor: pointer;
+}
+
+.titles {
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+  color: #222;
+  letter-spacing: 1px;
+  font-family: "Roboto", serif;
+  font-weight: 400px;
+  margin-top: 45px;
+}
+
+
+
+
+::ng-deep .mat-checkbox-inner-container {
+  width: 25px !important;
+  height: 25px !important;
+  margin-block: 25px;
+}
+
+::ng-deep .mat-checkbox-ripple .mat-ripple-element {
+  background-color: rgb(107, 14, 154) !important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: rgb(107, 14, 154) !important;
+}
+
+::ng-deep .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: rgb(107, 14, 154) !important;
+}

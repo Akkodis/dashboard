@@ -1,0 +1,169 @@
+@import "../../../../styles/app-colors.scss";
+
+.container {
+  margin-top: 1.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.filter-box {
+  background-color: #EDF7F7;
+  border: 2px solid rgb(163, 160, 160, 0.6) !important;
+  height: fit-content;
+  width: 380px;
+  border-radius: 5px;
+}
+
+.filterInput {
+  width: 120px;
+}
+
+.child-3 {
+  background-color: green;
+}
+
+h1 {
+  font-size: 1.5rem !important;
+  color: $main-color2 !important;
+}
+
+// .titles h1 {
+//   text-align: center;
+//   font-size: 25px;
+//   text-transform: uppercase;
+//   color: #222;
+//   letter-spacing: 1px;
+//   font-family: "Playfair Display", serif;
+//   font-weight: 200;
+//   margin-top: 45px;
+// }
+
+h3 {
+
+  font-size: 1.2rem !important;
+  padding-left: 40px !important;
+  color: $main-color1 !important;
+}
+
+::ng-deep th.mat-header-cell {
+  width: 140px;
+  min-width: 140px;
+}
+
+::ng-deep td.mat-cell {
+  text-align: center !important;
+  border-color: transparent;
+  font-weight: 700;
+}
+
+
+table {
+  background-color: transparent;
+  margin: 20px;
+  width: 100%;
+  box-shadow: unset;
+  border-color: white !important;
+}
+
+.databox {
+  max-width: 400px;
+  margin: 2em;
+}
+
+mat-card:hover .selection {
+  opacity: 1;
+}
+
+mat-card.mat-elevation-z4 .selection {
+  opacity: 1;
+}
+
+.card-selected {
+  border: 2px solid #283593;
+}
+
+.selection {
+  opacity: 0;
+  cursor: pointer;
+  color: #283593;
+  background: #fff;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  border-radius: 100%;
+  height: 24px;
+  width: 24px;
+}
+
+p {
+  margin-top: 2em;
+}
+
+.center {
+  text-align: center;
+}
+
+.titles h1 {
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+  color: #222;
+  letter-spacing: 1px;
+  font-family: "Roboto", serif;
+  font-weight: 400;
+  margin-top: 45px;
+}
+
+.titles h3 {
+  text-align: center;
+  font-size: 25px;
+  color: #5b5757;
+  letter-spacing: 1px;
+  font-family: "Roboto", serif;
+  font-weight: 400;
+  margin-top: 45px;
+  padding-right: 35px;
+}
+
+
+.map-container {
+  position: absolute;
+  top: 150px;
+  left: 0;
+  right: 0;
+  bottom: 15px;
+  margin: 30px;
+}
+
+.map-frame {
+  border: 2px solid black;
+  height: 100%;
+}
+
+#map {
+  height: 100%;
+}
+
+.leaflet-tile {
+  border: solid black 5px;
+}
+
+
+::ng-deep {
+
+  .leafletBtn,
+  #lfBtn {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    text-align: center;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    color: #fff;
+    background-color: rgb(141, 206, 232);
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+}

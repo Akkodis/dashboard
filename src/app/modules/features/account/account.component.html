@@ -1,0 +1,111 @@
+<div class="container">
+  <div fxLayout="row" fxLayoutAlign="space-around stretch">
+    <div class="filter-box" fxFlex="15%" fxFlexFill>
+      <mat-list>
+        <!-- Filters  -->
+        <h1 matSubheader>Cost management + Billing</h1>
+        <mat-list-item>
+          <mat-icon mat-list-icon>visibility</mat-icon>
+          <div mat-line>Overview</div>
+        </mat-list-item>
+        <h3 matSubheader>Cost management </h3>
+        <mat-list-item>
+          <mat-icon mat-list-icon>analytics</mat-icon>
+          <div mat-line>Cost analysis</div>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon mat-list-icon>price_change</mat-icon>
+          <div mat-line>Cost alerts</div>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon mat-list-icon>account_balance_wallet</mat-icon>
+          <div mat-line>Budget</div>
+        </mat-list-item>
+        <h3 matSubheader>Billing</h3>
+        <mat-list-item>
+          <mat-icon mat-list-icon>announcement</mat-icon>
+          <div mat-line>Notifiations</div>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon mat-list-icon>file_upload</mat-icon>
+          <div mat-line>Exports</div>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon mat-list-icon>price_change</mat-icon>
+          <div mat-line>Reports</div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div class="data-box" fxFlex="85%">
+      <!-- toolbar of actions -->
+      <mat-toolbar fxLayout="row inline" fxLayoutGap="30px" style="background-color: transparent;" fxLayoutGap="25px">
+        <div fxFlex="90%">
+          <button mat-stroked-button class="account-action-button">Action1</button>
+          <button mat-stroked-button class="account-action-button">Action2</button>
+          <button mat-stroked-button class="account-action-button">Action3</button>
+          <button mat-stroked-button class="account-action-button">Action4</button>
+          <button mat-stroked-button class="account-action-button">Action5</button>
+          <button mat-stroked-button class="account-action-button">Action6</button>
+          <button mat-stroked-button class="account-action-button">Action7</button>
+          <button mat-stroked-button class="account-action-button">Action8</button>
+          <button mat-stroked-button class="account-action-button">Action9</button>
+          <button mat-stroked-button class="account-action-button">Action10</button>
+        </div>
+      </mat-toolbar>
+      <!-- Account boxes -->
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="25px">
+        <div *ngFor="let i of [0,1,2,3,4,5,6,7,8,9]" class="databox">
+          <div fxFlex="1 1 auto">
+            <mat-card>
+              <mat-list>
+                <mat-list-item>
+                  <mat-icon matListAvatar>account_box</mat-icon>
+                  <h4 matLine>Data</h4>
+                  <p matLine>Data subtitle</p>
+                </mat-list-item>
+                <mat-divider matInset></mat-divider>
+                <mat-card-content>
+                  <div fxLayout="row" fxLayoutGap="10">
+                    <div fxFlex="90%">
+                      <p>
+                        The Shiba Inu is the smallest of the six original and distinct spitz
+                        breeds of dog from Japan.
+                        A small, agile dog that copes very well with mountainous terrain, the
+                        Shiba Inu was originally
+                        bred for hunting.
+                      </p>
+                    </div>
+                  </div>
+                </mat-card-content>
+                <mat-divider matInset></mat-divider>
+                <mat-list-item>
+                  <mat-icon matListAvatar>info</mat-icon>
+                  <h4 matLine>Information1</h4>
+                  <p matLine>Description of info 1</p>
+                </mat-list-item>
+              </mat-list>
+              <mat-divider></mat-divider>
+              <mat-card-actions align="end">
+                <button mat-button color="primary" class="text-upper">
+                  <mat-icon matListAvatar>table_view</mat-icon>
+                </button>
+                <button mat-button color="primary" class="text-upper">
+                  <mat-icon matListAvatar>info</mat-icon>
+                </button>
+                <button mat-button color="primary" class="text-upper">
+                  <mat-icon matListAvatar>map</mat-icon>
+                </button>
+                <button mat-button color="primary" class="text-upper">
+                  <mat-icon matListAvatar>favorite</mat-icon>
+                </button>
+                <button mat-button color="primary" class="text-upper">
+                  <mat-icon matListAvatar>help_outline</mat-icon>
+                </button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
