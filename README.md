@@ -81,6 +81,7 @@ To deploy in production mode, the following steps needs to be followed:
 
 ## Authors
 
+- Mejdi Ghorri
 - Kamel Khenessi
 - Mohamed Tarhouni
 - Mandimby Ranaivo R.
