@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "lint": "eslint src/**/*.ts",
@@ -38,7 +38,7 @@
     "faker": "^5.5.3",
     "k": "file:angular-devkit/build-angular@latest",
     "keycloak-angular": "^12.1.0",
-    "keycloak-js": "^19.0.1",
+    "keycloak-js": "^19.0.3",
     "leaflet": "^1.9.3",
     "lint": "^0.7.0",
     "momentjs": "^2.0.0",

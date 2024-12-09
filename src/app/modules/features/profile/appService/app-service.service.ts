@@ -10,18 +10,18 @@ export class AppServiceService {
 
   constructor(private http: HttpClient) { }
   // URL_DB = 'http://20.199.90.04'
-  URL_DB = 'http://dashboard-5gmeta.francecentral.cloudapp.azure.com';
-  private url_businessInfos = 'http://dashboard-5gmeta.francecentral.cloudapp.azure.com:8080/user-business-info';
+  URL_DB = 'http://5gmeta-platform.eu/identity/user-business-info';
+  private url_businessInfos = 'http://5gmeta-platform.eu/identity/user-business-info/';
   // 'http://localhost:8080/user-business-info';
   PORT_NUM = '8080';
   getData() {
-    return this.http.get(this.URL_DB + ':' + this.PORT_NUM + "/users");
+    return this.http.get(this.URL_DB + "/users");
   }
   updateData(username: string, value: any) {
-    return this.http.put(this.URL_DB + ':' + this.PORT_NUM + '/users/' + username, value);
+    return this.http.put(this.URL_DB + '/users/' + username, value);
   }
   deleteData(username: string) {
-    return this.http.delete(this.URL_DB + ':' + this.PORT_NUM + '/users/' + username);
+    return this.http.delete(this.URL_DB + '/users/' + username);
   }
 
   addBusinessInfo(data: any): Observable<Object> {

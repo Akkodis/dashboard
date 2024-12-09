@@ -17,7 +17,7 @@ export const initializeKeycloak = (keycloak: KeycloakService) => {
       },
       bearerExcludedUrls: ['/assets'],
       initOptions: {
-        checkLoginIframe: true,
+        checkLoginIframe: false,
         checkLoginIframeInterval: 25
         /*onLoad: 'check-sso',
         silentCheckSsoRedirectUri:

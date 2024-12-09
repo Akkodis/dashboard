@@ -73,6 +73,6 @@ export class ProfileComponent implements OnInit {
 
   onChangePassword() {
     window.location.href =
-      "https://5gmeta-platform.eu/identity/realms/5gmeta/login-actions/reset-credentials?client_id=5gmeta_login&tab_id=Kn9Vcbmf4gQ";
+      "http://5gmeta-platform.eu/identity/realms/5gmeta/login-actions/reset-credentials?client_id=5gmeta_login&tab_id=Kn9Vcbmf4gQ";
   }
 }
