@@ -1,0 +1,30 @@
+header{
+    position: absolute;
+    top: 0;
+    width : 70px;
+    margin-left: 9px;
+    // z-index: 11;
+    // transition: all 250ms linear;
+  }
+
+.hidden{
+  opacity: 0;
+}
+
+  .search-block{
+    width: 0%;
+    right: 0;
+    @extend header;
+    background: #fff;
+    &.active{
+      width: 25%;
+      margin-right: 60%;
+    }
+    .search-control{
+      flex: 1;
+      font-size: 1rem;
+      border: 0;
+      outline: none;
+      padding-left: 10px;
+    }
+  }

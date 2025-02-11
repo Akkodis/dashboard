@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import './app-colors.scss';
+@import './fonts.scss';
+@import './spinners.scss';
+@import '~ngx-toastr/toastr';
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif !important;
+}
+
+
+// override material inline style to allow mini nav state
+mat-sidenav[style] {
+  visibility: visible !important;
+}
+
+.mat-drawer {
+  transform: none !important;
+}
+
+.custom-bread-crumb {
+  width: fit-content;
+  background-color: transparent !important;
+}

@@ -1,0 +1,25 @@
+.container {
+  margin-top: 1.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.center {
+  text-align: center;
+}
+
+mat-card {
+  width: 200px !important;
+  height: auto !important;
+  margin: 10px !important;
+  padding: 10px !important;
+}
+
+mat-card.mat-elevation-z4 .selection {
+  opacity: 1;
+}
+
+.center {
+  text-align: center;
+}
+

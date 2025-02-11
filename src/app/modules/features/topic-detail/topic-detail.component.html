@@ -1,0 +1,49 @@
+<mat-card>
+    <div>
+        <button style="float: right; margin-right: 5px; background-color:white" mat-mini-fab
+            (click)="closeModale()"><mat-icon>close</mat-icon></button>
+    </div>
+    <mat-card-header>
+        <mat-card-title style="margin-top: 11px;">Topic details</mat-card-title>
+    </mat-card-header>
+    <div mat-row class="center">
+        <div style="margin-left: 10px; margin-top: 10px;">
+            Topic name:
+            <div class="microlight" style="margin-left: 45px">
+                <label>{{inputData.title}}</label>
+                <button mat-icon-button (click)="copy(inputData.title)"><mat-icon>content_copy</mat-icon></button>
+            </div>
+            <hr />
+            Broker IP address:
+            <div class="microlight" style="margin-left: 10px">
+                <label>52.47.105.88</label>
+                <button mat-icon-button (click)="copy('52.47.105.88')"><mat-icon>content_copy</mat-icon></button>
+            </div>
+            <hr />
+            Broker ports:&emsp;
+
+            <div class="microlight">
+                <label>31090</label>
+                <button mat-icon-button (click)="copy('31090')"><mat-icon>content_copy</mat-icon></button>
+            </div>
+            <div class="microlight">
+                <label>31091</label>
+                <button mat-icon-button (click)="copy('31091')"><mat-icon>content_copy</mat-icon></button>
+            </div>
+            <div class="microlight">
+                <label>31092</label>
+                <button mat-icon-button (click)="copy('31092')"><mat-icon>content_copy</mat-icon></button>
+            </div>
+            <hr />
+        </div>
+    </div>
+    <div mat-dialog-content>
+    </div>
+    <div mat-dialog-actions align="end">
+        <button mat-mini-fab color="" (click)="monitoring(inputData.title)"
+            style="margin-left: 15px;"><mat-icon>legend_toggle</mat-icon></button>
+        <button mat-mini-fab color="warn" (click)="delete(inputData.title)"
+            style="margin-right: 5px;"><mat-icon>delete</mat-icon>
+        </button>
+    </div>
+</mat-card>

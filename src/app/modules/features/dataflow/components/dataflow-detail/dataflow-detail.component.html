@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="titles">
+    <h1 class="center">Dataflow details</h1>
+  </div>
+
+  <div *ngIf="dataFlow$ | async as dataFlowData">
+    <mat-card>
+      <mat-card-title>Dataflow ID: {{ dataFlowData.dataFlowId }}</mat-card-title>
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <b>Data info</b>
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-list role="list">
+            <mat-list-item role="listitem">Format: {{ dataFlowData.dataInfo?.dataFormat }}</mat-list-item>
+            <mat-list-item role="listitem">Sample rate: {{ dataFlowData.dataInfo?.dataSampleRate }}</mat-list-item>
+            <mat-list-item role="listitem">Direction: {{ dataFlowData.dataInfo?.dataflowDirection }}
+            </mat-list-item>
+          </mat-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <b>Data source info</b>
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-list role="list">
+            <mat-list-item role="listitem">Source ID: {{ dataFlowData.dataSourceInfo?.sourceId }}</mat-list-item>
+          </mat-list>
+          <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Source location info:
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <mat-list role="list">
+                <mat-list-item role="listitem">Country: {{
+                  dataFlowData.dataSourceInfo?.sourceLocationInfo?.locationCountry }}
+                </mat-list-item>
+                <mat-list-item role="listitem">Quadkey: {{
+                  dataFlowData.dataSourceInfo?.sourceLocationInfo?.locationQuadkey }}</mat-list-item>
+              </mat-list>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <mat-list role="list">
+            <mat-list-item role="listitem">Source type: {{ dataFlowData.dataSourceInfo?.sourceType }}</mat-list-item>
+            <mat-list-item role="listitem">Time of last update: {{ dataFlowData.dataSourceInfo?.timeLastUpdate
+              }}</mat-list-item>
+            <mat-list-item role="listitem">Time of registration: {{ dataFlowData.dataSourceInfo?.timeRegistration
+              }}</mat-list-item>
+            <mat-list-item role="listitem">Stratum level: {{ dataFlowData.dataSourceInfo?.timeStratumLevel
+              }}</mat-list-item>
+            <mat-list-item role="listitem">Timezone: {{ dataFlowData.dataSourceInfo?.timeZone }}</mat-list-item>
+          </mat-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <b>Data type info</b>
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-list role="list">
+            <mat-list-item role="listitem">Data type: {{ dataFlowData.dataTypeInfo?.dataType }}
+            </mat-list-item>
+            <mat-list-item role="listitem">Data subtype: {{ dataFlowData.dataTypeInfo?.dataSubType }}
+            </mat-list-item>
+          </mat-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <b>License Info</b>
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-list role="list">
+            <mat-list-item role="listitem">Geo limit: {{ dataFlowData.licenseInfo?.licenseGeolimit }}
+            </mat-list-item>
+            <mat-list-item role="listitem">Type: {{ dataFlowData.licenseInfo?.licenseType }}</mat-list-item>
+          </mat-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card>
+  </div>
+</div>

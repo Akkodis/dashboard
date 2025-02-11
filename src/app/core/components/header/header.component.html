@@ -1,0 +1,88 @@
+<!-- la directive screenLarge et screenBelowLarge avec le service screen
+permet de gérer la résponsivité de l'application via typescipt au lieu de scss -->
+<div *screenLarge class="nav-bar">
+  <mat-toolbar class="header-color">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="toggleMenu.emit(null)">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <img class="toolbar-title" src="assets/images/Logo5G_bgdark.png" alt="5GMETA LOGO" width="120px"
+        height="fit-content">
+      <!-- <app-nav-search></app-nav-search> -->
+      <div fxFlex fxLayout fxLayoutAlign="flex-end" class="menu-area">
+        <ul fxLayout fxLayoutGap="30px" class="navigation-items">
+          <!-- Settings -->
+          <!--
+          <li fxHide.xs>
+            <button mat-icon-button>
+              <mat-icon> settings </mat-icon>
+            </button>
+          </li>
+          -->
+          <!-- Help Outline -->
+          <!--
+          <li fxHide.xs>
+            <button mat-icon-button>
+              <mat-icon> help_outline </mat-icon>
+            </button>
+          </li>
+          -->
+          <!-- Profil -->
+          <li>
+            <button mat-icon-button [matMenuTriggerFor]="auth" style="padding-bottom: 65px; margin-right: 20px;">
+              {{username}}
+              <mat-icon class="my-class"> person </mat-icon>
+            </button>
+            <mat-menu #auth="matMenu" class="my-class">
+
+              <button mat-menu-item disabled> {{username}} </button>
+              <mat-divider></mat-divider>
+              <button mat-menu-item (click)="onProfile()">
+                <mat-icon> person </mat-icon>
+                <span> {{ 'PROFILE_NAVIGATION_BAR_BUTTON' | translate }} </span>
+              </button>
+
+              <mat-divider></mat-divider>
+              <app-auth-button></app-auth-button>
+            </mat-menu>
+          </li>
+          <!-- <li> <span>{{firstname}} {{lastname}}</span></li> -->
+        </ul>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+<div *screenBelowLarge class="nav-bar-min">
+  <mat-toolbar class="header-color-min">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="toggleMenu.emit(null)">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <img class="toolbar-title-min" src="assets/images/Logo5G_bgdark.png" alt="5GMETA LOGO" width="80px"
+        height="fit-content">
+      <div fxFlex fxLayout fxLayoutAlign="flex-end" class="menu-area">
+      </div>
+      <button mat-icon-button [matMenuTriggerFor]="settingsMenu">
+        <mat-icon>settings</mat-icon>
+      </button>
+      <span>{{firstname}} {{lastname}}</span>
+    </mat-toolbar-row>
+    <mat-menu #settingsMenu>
+      <button mat-menu-item (click)="onHelp()">
+        <mat-icon> help_outline </mat-icon> Help
+      </button>
+      <button mat-menu-item [matMenuTriggerFor]="profileSettings" (click)="onProfile()">
+        <mat-icon> person </mat-icon>Profile
+      </button>
+      <app-auth-button></app-auth-button>
+    </mat-menu>
+    <mat-menu #profileSettings>
+      <button mat-menu-item [matMenuTriggerFor]="changePassword">Vertebrates</button>
+      <button mat-menu-item>Invertebrates</button>
+    </mat-menu>
+    <mat-menu #changePassword>
+      <button mat-menu-item>pass</button>
+      <button mat-menu-item>word</button>
+    </mat-menu>
+  </mat-toolbar>
+</div>

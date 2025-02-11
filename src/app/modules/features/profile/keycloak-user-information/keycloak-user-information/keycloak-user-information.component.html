@@ -1,0 +1,37 @@
+<mat-card class="form">
+    <form [formGroup]="formGroup" novalidate (ngSubmit)="onSubmit()">
+        <mat-card-content>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="User name" formControlName="userName" ngModel={{userName}}
+                            readonly>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="First name" formControlName="firstName" ngModel={{firstName}}
+                            readonly>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Last name" formControlName="lastName" ngModel={{lastName}}
+                            readonly>
+                    </mat-form-field>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Email" formControlName="email" ngModel={{email}} readonly>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+    </form>

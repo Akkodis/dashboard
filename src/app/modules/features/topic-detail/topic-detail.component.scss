@@ -1,0 +1,31 @@
+.microlight {
+    display: inline-block;
+    font-family: monospace;
+    background-color: #263238;
+    color: #AABBC3;
+    text-align: left;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+    border-radius: 0.2em;
+    padding: 10px;
+    margin-left: 40px;
+    white-space: pre;
+}
+
+.tab {
+    display: inline-block;
+    margin-left: 4em;
+}
+
+.mat-card-header {
+    background: #12121212;
+    padding: 5px;
+    color: rgba(107, 14, 154);
+}
+
+.mat-card-content {
+    padding: 10px;
+}
+
+.mat-card {
+    padding: 0;
+}

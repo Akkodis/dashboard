@@ -1,0 +1,75 @@
+@import 'app-colors';
+
+$toolbar-title-padding: 32px !default;
+$toolbar-title-padding-min: 16px !default;
+
+.toolbar-title {
+  margin: 0 $toolbar-title-padding 0 $toolbar-title-padding;
+}
+
+.toolbar-title-min {
+  margin: 0 $toolbar-title-padding-min 0 $toolbar-title-padding-min;
+}
+
+.navigation-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.header-color {
+  background-color: $main-color2;
+  color: white;
+}
+
+.header-color-min {
+  background-color: $main-color1;
+  color: white;
+}
+
+:host {
+  display: flex;
+}
+
+.nav-bar {
+  flex-grow: 1;
+  display: flex;
+  min-height: 64px;
+}
+
+.nav-bar-min {
+  flex-grow: 1;
+  display: flex;
+  min-height: 40px;
+}
+
+.menu-area {
+  margin-top: 24px;
+  padding-right: 20px;
+
+
+}
+
+.mat-menu-panel {
+  margin-top: 15px;
+}
+
+::ng-deep {
+  .mat-menu-panel.my-class {
+    width: 400px;
+    margin-left: 5px !important;
+    padding-left: 5px !important;
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+    float: right !important;
+  }
+
+}
+
+.myClass {
+  position: absolute;
+  padding-bottom: 35px;
+  right: 25;
+  left: auto;
+}

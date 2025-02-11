@@ -1,0 +1,106 @@
+@import "../../../../styles/app-colors.scss";
+
+.container {
+  margin-top: 1.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+
+  .microlight {
+    font-family: monospace;
+    white-space: pre;
+    background-color: #263238;
+    color: #AABBC3;
+    text-align: left;
+    overflow-x: auto;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+    border-radius: 0.2em;
+    display: inline-flex;
+    padding: 10px;
+    margin-bottom: 10px;
+    height: 58px;
+  }
+
+  .filter-box {
+    background-color: #EDF7F7;
+    border: 2px solid rgb(163, 160, 160, 0.6) !important;
+    height: fit-content;
+    width: 380px;
+    border-radius: 5px;
+  }
+
+  .filterInput {
+    width: 120px;
+  }
+
+  .child-3 {
+    background-color: green;
+  }
+
+  h1 {
+    font-size: 1.5rem !important;
+    color: $main-color2 !important;
+  }
+
+  h3 {
+    font-size: 1.2rem !important;
+    padding-left: 40px !important;
+    color: $main-color1 !important;
+  }
+
+  ::ng-deep th.mat-header-cell {
+    width: 140px;
+    min-width: 140px;
+  }
+
+  ::ng-deep td.mat-cell {
+    text-align: center !important;
+    border-color: transparent;
+    font-weight: 700;
+  }
+
+  table {
+    background-color: transparent;
+    margin: 20px;
+    width: 100%;
+    box-shadow: unset;
+    border-color: white !important;
+  }
+
+  .databox {
+    max-width: 400px;
+    margin: 2em;
+  }
+
+  mat-card:hover .selection {
+    opacity: 1;
+  }
+
+  mat-card.mat-elevation-z4 .selection {
+    opacity: 1;
+  }
+
+  .card-selected {
+    border: 2px solid #283593;
+  }
+
+  .selection {
+    opacity: 0;
+    cursor: pointer;
+    color: #283593;
+    background: #fff;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    border-radius: 100%;
+    height: 24px;
+    width: 24px;
+  }
+
+  p {
+    margin-top: 2em;
+  }
+}
+
+.center {
+  text-align: center;
+}
