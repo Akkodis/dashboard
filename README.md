@@ -1,6 +1,6 @@
-# Dashboard
+# 5GMETA Cloud Platform Dashboard
 
-## Overview
+## Introduction
 
 This project hosts the source code of the dashboard module of the 5GMETA platform.
 
@@ -90,14 +90,6 @@ To deploy in production mode, the following steps needs to be followed:
 - Laeticia Calice
 - Contact: 5gmeta@akkodis.com
 
-## License
+## Conclusion and Roadmap
 
-Copyright : Copyright 2023 AKKODIS
-
-License : EUPL 1.2 ([https://eupl.eu/1.2/en/](https://eupl.eu/1.2/en/))
-
-The European Union Public Licence (EUPL) is a copyleft free/open source software license created on the initiative of and approved by the European Commission in 23 official languages of the European Union.
-
-Licensed under the EUPL License, Version 1.2 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at [https://eupl.eu/1.2/en/](https://eupl.eu/1.2/en/)
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+#TODO
