@@ -55,7 +55,7 @@ export class DataflowSubtypeComponent implements OnInit, AfterViewChecked {
     private changeDetectorRef: ChangeDetectorRef
   ) {
     this.currentUser = this.keycloakClientAutheService.getUserName();
-    this.xUserInfo = this.keycloakClientAutheService.auth._userProfile.id;
+    this.xUserInfo = this.keycloakClientAutheService['auth']['_userProfile']['id'];
   }
 
   ngAfterViewChecked (): void {
