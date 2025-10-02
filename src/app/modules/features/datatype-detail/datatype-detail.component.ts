@@ -10,10 +10,10 @@ export interface dataKeywords {
 }
 
 @Component({
-    selector: 'app-datatype-detail',
-    templateUrl: './datatype-detail.component.html',
-    styleUrls: ['./datatype-detail.component.scss'],
-    standalone: false
+  selector: 'app-datatype-detail',
+  templateUrl: './datatype-detail.component.html',
+  styleUrls: ['./datatype-detail.component.scss'],
+  standalone: false
 })
 export class DatatypeDetailComponent implements OnInit, AfterViewInit {
   showMyContainer: boolean = true;
@@ -27,13 +27,13 @@ export class DatatypeDetailComponent implements OnInit, AfterViewInit {
   currentDataTypes: any[] = [];
   currentTile: string | any;
 
-  constructor(
+  constructor (
     private router: Router,
     private activeRoute: ActivatedRoute,
     private dataStoreService: DataStoreService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit (): void {
     const mapParams = this.activeRoute.snapshot.paramMap;
     this.currentTile = mapParams.get('tile');
 
@@ -45,22 +45,20 @@ export class DatatypeDetailComponent implements OnInit, AfterViewInit {
     }
   }
 
-  ngAfterViewInit(): void {
+  ngAfterViewInit (): void {
   }
 
-  onSelectCard(index: number) {
+  onSelectCard (index: number) {
     this.selected = index;
   }
 
-  onSelectDatatype(index: number, dataType: string) {
+  onSelectDatatype (index: number, dataType: string) {
     this.selected = index;
     this.router.navigate(['tile', this.currentTile, 'datatype', dataType]);
-
   }
 
   // -- todo : navigate to different SubType view (remove or not ?)
-  private navigateToSubtype(name: string) {
-
+  private navigateToSubtype (name: string) {
     switch (name.toLocaleUpperCase()) {
       case 'cits'.toLocaleUpperCase(): {
         this.navigateTo('/SubtypeCits');
@@ -90,7 +88,7 @@ export class DatatypeDetailComponent implements OnInit, AfterViewInit {
     }
   }
 
-  private navigateTo(navigate: string) {
+  private navigateTo (navigate: string) {
     this.router.navigate([navigate], {
       queryParams: { tile: this.tileSelected }
     });

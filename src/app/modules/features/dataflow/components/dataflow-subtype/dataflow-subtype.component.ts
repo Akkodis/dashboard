@@ -15,10 +15,10 @@ import { DialogService } from '@core/services/dialog.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-    selector: 'app-dataflow-subscription',
-    templateUrl: './dataflow-subtype.component.html',
-    styleUrls: ['./dataflow-subtype.component.scss'],
-    standalone: false
+  selector: 'app-dataflow-subscription',
+  templateUrl: './dataflow-subtype.component.html',
+  styleUrls: ['./dataflow-subtype.component.scss'],
+  standalone: false
 })
 export class DataflowSubtypeComponent implements OnInit, AfterViewChecked {
   dataflowIDs$: Observable<number[]>;

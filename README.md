@@ -16,7 +16,7 @@ To install Angular on a local system, the following requirements are needed:
     - More information on installing Node.js on its [official website](https://nodejs.org/).
 - npm package manager
     - It should be installed with Node.js by default.
-    - To verify, run `npm -v`
+    - To verify, run `npm -v`.
 
 Versions used in dev :
 
@@ -81,7 +81,7 @@ To deploy in production mode, the following steps needs to be followed:
 
 ## Authors
 
-- Anderson chaville
+- Anderson Chaville
 - Mejdi Ghorri
 - Kamel Khenessi
 - Mohamed Tarhouni
