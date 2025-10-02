@@ -11,10 +11,10 @@ export interface dataKeywords {
 }
 
 @Component({
-    selector: 'app-datastore',
-    templateUrl: './datastore.component.html',
-    styleUrls: ['./datastore.component.scss'],
-    standalone: false
+  selector: 'app-datastore',
+  templateUrl: './datastore.component.html',
+  styleUrls: ['./datastore.component.scss'],
+  standalone: false
 })
 export class DatastoreComponent implements OnInit, AfterViewInit {
   dataTile$: Observable<string[]>;
@@ -23,20 +23,20 @@ export class DatastoreComponent implements OnInit, AfterViewInit {
   tileSelected: string;
   map: L.Map;
 
-  constructor(
+  constructor (
     private router: Router,
     private dataStoreService: DataStoreService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit (): void {
     this.dataTile$ = this.dataStoreService.getTile();
   }
 
-  ngAfterViewInit(): void {
+  ngAfterViewInit (): void {
     this.initMap();
   }
 
-  private initMap(): void {
+  private initMap (): void {
     this.map = L.map('map', {
       center: [50, 0],
       zoom: 5
@@ -83,7 +83,7 @@ export class DatastoreComponent implements OnInit, AfterViewInit {
         // totalDatatypes = this.onSelectTile(tile);
 
         const div = document.createElement('div');
-        div.innerHTML = '<b>Quadkey:</b> ' + tile + '<br>'; //+ '<br> <b>Available data types:</b> ' + totalDatatypes + '<br>';
+        div.innerHTML = '<b>Quadkey:</b> ' + tile + '<br>'; // + '<br> <b>Available data types:</b> ' + totalDatatypes + '<br>';
 
         const button = document.createElement('button');
         button.innerHTML = 'Show data types';
@@ -103,7 +103,7 @@ export class DatastoreComponent implements OnInit, AfterViewInit {
   }
 
   // --
-  onSelectTile(tile: string) {
+  onSelectTile (tile: string) {
     const isTileNotEmpty = !!tile.trim();
     if (isTileNotEmpty) {
       this.dataStoreService.getDataTypesInTile(tile).subscribe(datatypes => {
@@ -120,7 +120,7 @@ export class DatastoreComponent implements OnInit, AfterViewInit {
   }
 
   // -- button inside popup : route to datatype detail
-  onClickButton(tile: string) {
+  onClickButton (tile: string) {
     this.router.navigate(['/tile/', tile]);
   }
 }
