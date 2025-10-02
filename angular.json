@@ -33,7 +33,12 @@
             "namedChunks": true,
             "allowedCommonJsDependencies": [
               "keycloak-js",
-              "clone-deep"
+              "clone-deep",
+              "rfdc",
+              "base64-js",
+              "js-sha256",
+              "leaflet",
+              "chartjs-plugin-datasource-prometheus"
             ],
             "assets": [
               "src/favicon.ico",
@@ -88,10 +93,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "fivegmeta:build:production"
+              "buildTarget": "fivegmeta:build:production"
             },
             "development": {
-              "browserTarget": "fivegmeta:build:development"
+              "buildTarget": "fivegmeta:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -99,7 +104,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "fivegmeta:build"
+            "buildTarget": "fivegmeta:build"
           }
         },
         "test": {
@@ -133,6 +138,5 @@
     "@schematics/angular:component": {
       "skipTests": true
     }
-  },
-  "defaultProject": "fivegmeta"
+  }
 }

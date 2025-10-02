@@ -7,13 +7,13 @@ permet de gérer la résponsivité de l'application via typescipt au lieu de scs
         <mat-icon>menu</mat-icon>
       </button>
       <img class="toolbar-title" src="assets/images/Logo5G_bgdark.png" alt="5GMETA LOGO" width="120px"
-        height="fit-content">
+           height="fit-content">
       <!-- <app-nav-search></app-nav-search> -->
-      <div fxFlex fxLayout fxLayoutAlign="flex-end" class="menu-area">
-        <ul fxLayout fxLayoutGap="30px" class="navigation-items">
+      <div class="menu-area flex flex-1 flex-row justify-end">
+        <ul class="navigation-items flex flex-row gap-[30px]">
           <!-- Settings -->
           <!--
-          <li fxHide.xs>
+          <li class="hidden xs:block">
             <button mat-icon-button>
               <mat-icon> settings </mat-icon>
             </button>
@@ -21,7 +21,7 @@ permet de gérer la résponsivité de l'application via typescipt au lieu de scs
           -->
           <!-- Help Outline -->
           <!--
-          <li fxHide.xs>
+          <li class="hidden xs:block">
             <button mat-icon-button>
               <mat-icon> help_outline </mat-icon>
             </button>
@@ -31,15 +31,15 @@ permet de gérer la résponsivité de l'application via typescipt au lieu de scs
           <li>
             <button mat-icon-button [matMenuTriggerFor]="auth" style="padding-bottom: 65px; margin-right: 20px;">
               {{username}}
-              <mat-icon class="my-class"> person </mat-icon>
+              <mat-icon> person </mat-icon>
             </button>
             <mat-menu #auth="matMenu" class="my-class">
 
-              <button mat-menu-item disabled> {{username}} </button>
+              <button mat-menu-item disabled> {{username}}</button>
               <mat-divider></mat-divider>
               <button mat-menu-item (click)="onProfile()">
-                <mat-icon> person </mat-icon>
-                <span> {{ 'PROFILE_NAVIGATION_BAR_BUTTON' | translate }} </span>
+                <mat-icon class="text-black opacity-60"> person </mat-icon>
+                <span class="text-black opacity-60"> {{ 'PROFILE_NAVIGATION_BAR_BUTTON' | translate }} </span>
               </button>
 
               <mat-divider></mat-divider>
@@ -59,8 +59,8 @@ permet de gérer la résponsivité de l'application via typescipt au lieu de scs
         <mat-icon>menu</mat-icon>
       </button>
       <img class="toolbar-title-min" src="assets/images/Logo5G_bgdark.png" alt="5GMETA LOGO" width="80px"
-        height="fit-content">
-      <div fxFlex fxLayout fxLayoutAlign="flex-end" class="menu-area">
+           height="fit-content">
+      <div class="menu-area flex flex-1 flex-row justify-end">
       </div>
       <button mat-icon-button [matMenuTriggerFor]="settingsMenu">
         <mat-icon>settings</mat-icon>

@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { dataFlowData } from '../models/dataflow-data.model';
 import { Sla } from '@shared/interfaces/sla';
+import { tap } from 'rxjs/operators';
 import { KeycloakClientAutheService } from '@core/guards/keycloak-client-auth.service';
 
 @Injectable({
@@ -20,7 +21,7 @@ export class DataStoreService {
   }
 
   getTile(): Observable<any[]> {
-    return this.http.get<string[]>(this.BASE_URL + '/discovery-api/mec/tile');
+    return this.http.get<string[]>(this.BASE_URL + '/mec/tile');
   }
 
   getDataTypesInTile(tile: string): Observable<any> {
@@ -30,11 +31,10 @@ export class DataStoreService {
     //   // for the use of mockData
     //   usedUrl = environment.backendUrl.apiMockData + '/datatypes/'
     // } else {
-    usedUrl = this.BASE_URL + '/dataflow-api/datatypes/' + tile
+    usedUrl = this.BASE_URL + '/datatypes/' + tile
     // }
 
     return this.http.get<any>(usedUrl)
-
   }
 
   getDatatypeProperties(dataType: string): Observable<any> {
@@ -43,7 +43,7 @@ export class DataStoreService {
     //   // for the use of mockData
     //   usedUrl = environment.backendUrl.apiMockData + `/SubtypeCits`
     // } else {
-    usedUrl = this.BASE_URL + `/dataflow-api/datatypes/${dataType}/properties`
+    usedUrl = this.BASE_URL + `/datatypes/${dataType}/properties`
     //  }
     return this.http.get<any>(usedUrl)
   }
@@ -65,7 +65,7 @@ export class DataStoreService {
     //   // for the use of mockData
     //   usedUrl = environment.backendUrl.apiMockData + `/SubtypeCits`
     // } else {
-    usedUrl = `${this.BASE_URL}/dataflow-api/dataflows/${dataType}/query/count`, { params: params }
+    usedUrl = `${this.BASE_URL}/dataflows/${dataType}/query/count`, { params: params }
     // }
 
     return this.http.get(usedUrl)
@@ -90,7 +90,7 @@ export class DataStoreService {
     //   // for the use of mockData
     //   usedUrl = environment.backendUrl.apiMockData + '/SubtypeCitsquery'
     // } else {
-    usedUrl = `${this.BASE_URL}/dataflow-api/dataflows/${dataType}/query`, { params: params }
+    usedUrl = `${this.BASE_URL}/dataflows/${dataType}/query`, { params: params }
     // }
 
     return this.http.get(usedUrl)
@@ -113,26 +113,26 @@ export class DataStoreService {
 
   getMec(tile: string): Observable<any> {
     return this.http.get<any>(
-      `${this.BASE_URL}/discovery-api/mec/tile/${tile}`
+      `${this.BASE_URL}/mec/tile/${tile}`
     );
   }
 
   getInstanceTypes(mecID: string): Observable<Sla[]> {
-    return this.http.get<Sla[]>(`${this.BASE_URL}/cloudinstance-api/mecs/${mecID}/types`);
+    return this.http.get<Sla[]>(`${this.BASE_URL}/mecs/${mecID}/types`);
   }
 
   saveReservation(idMec: string, data: any): Observable<Reservation> {
     const httpHeaders = new HttpHeaders();
     httpHeaders.append('X_Userinfo', data.X_Userinfo);
     return this.http.post<any>(
-      `${this.BASE_URL}/cloudinstance-api/mecs/${idMec}/instances`,
+      `${this.BASE_URL}/mecs/${idMec}/instances`,
       data
     );
   }
 
   deleteDeployedInstance(idReservation: string, idMec: string): Observable<any> {
     return this.http.delete<any>(
-      `${this.BASE_URL}/cloudinstance-api/mecs/${idMec}/instances/${idReservation}`
+      `${this.BASE_URL}/mecs/${idMec}/instances/${idReservation}`
     );
   }
 
@@ -140,24 +140,24 @@ export class DataStoreService {
     const httpHeaders = new HttpHeaders();
     httpHeaders.append('X_Userinfo', X_userInfo);
     return this.http.delete<any>(
-      `${this.BASE_URL}/dataflow-api/topics/${topicName}`);
+      `${this.BASE_URL}/topics/${topicName}`);
   }
 
   getDeployedInstances(idMec: string): Observable<Reservation[]> {
     return this.http.get<any>(
-      `${this.BASE_URL}/cloudinstance-api/mecs/${idMec}/instances`
+      `${this.BASE_URL}/mecs/${idMec}/instances`
     );
   }
 
   getTopicByName(topicName: string, X_userInfo: string): Observable<any> {
     const httpHeaders = new HttpHeaders();
     httpHeaders.set('X_Userinfo', X_userInfo);
-    return this.http.get<any>(`${this.BASE_URL}/dataflow-api/topics/${topicName}`);
+    return this.http.get<any>(`${this.BASE_URL}/topics/${topicName}`);
   }
   getAllTopics(X_userInfo: string): Observable<any> {
     const httpHeaders = new HttpHeaders();
     httpHeaders.set('X_Userinfo', X_userInfo);
-    return this.http.get<any>(`${this.BASE_URL}/dataflow-api/topics`);
+    return this.http.get<any>(`${this.BASE_URL}/topics`);
     //
     // of(['1111111111111111111', '22222222', '33333333', '44444444']);
   }
@@ -194,7 +194,7 @@ export class DataStoreService {
     httpHeaders.set('X_userInfo', X_userInfo);
 
     return this.http.post<any>(
-      `${this.BASE_URL}/dataflow-api/topics/${datatype}/query`, X_userInfo,
+      `${this.BASE_URL}/topics/${datatype}/query`, X_userInfo,
       {
         params: params
       }

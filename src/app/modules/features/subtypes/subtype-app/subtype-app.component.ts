@@ -7,9 +7,10 @@ import { map, Observable, Subscription } from 'rxjs';
 import { SubtypeCits } from '../subtype-cits/interfaces/subtype-city';
 
 @Component({
-  selector: 'app-subtype-app',
-  templateUrl: './subtype-app.component.html',
-  styleUrls: ['./subtype-app.component.scss'],
+    selector: 'app-subtype-app',
+    templateUrl: './subtype-app.component.html',
+    styleUrls: ['./subtype-app.component.scss'],
+    standalone: false
 })
 export class SubtypeAppComponent implements OnInit {
   quickAccessItems$: Observable<QuickAccessItem[]>;

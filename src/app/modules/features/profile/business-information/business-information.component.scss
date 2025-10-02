@@ -21,12 +21,13 @@ p {
 }
 
 .fill-remaining-space {
-    /* This fills the remaining space, by using flexbox. 
+    /* This fills the remaining space, by using flexbox.
        Every toolbar row uses a flexbox row layout. */
     flex: 1 1 auto;
 }
 
 .container {
+    all: unset;
     padding: 10px;
 }
 
@@ -68,4 +69,9 @@ p {
 .mat-toolbar {
     margin-bottom: 15px;
 
+}
+
+::ng-deep mat-form-field {
+  font-size: 14px;
+  margin-bottom: 0.5rem;
 }

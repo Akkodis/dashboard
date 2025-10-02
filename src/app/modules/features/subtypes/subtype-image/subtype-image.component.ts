@@ -6,9 +6,10 @@ export interface SubtypeImage {
 }
 
 @Component({
-  selector: 'app-subtype-image',
-  templateUrl: './subtype-image.component.html',
-  styleUrls: ['./subtype-image.component.scss']
+    selector: 'app-subtype-image',
+    templateUrl: './subtype-image.component.html',
+    styleUrls: ['./subtype-image.component.scss'],
+    standalone: false
 })
 export class SubtypeImageComponent implements OnInit {
   selected: SubtypeImage;

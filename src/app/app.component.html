@@ -1,15 +1,15 @@
-<div class="container" fxLayout="column">
-  <div class="container" *ngIf="false; else loaded">
+<div class="container-custom flex flex-col">
+  <div class="container-custom" *ngIf="false; else loaded">
     <app-loading></app-loading>
   </div>
   <ng-template #loaded>
     <app-header (toggleMenu)="toggleMenu()"></app-header>
-    <div fxFlex="1">
+    <div class="flex-1">
       <app-sidebar (toggleMenu)="toggleMenu()" [isExpanded]="isExpanded"></app-sidebar>
     </div>
     <app-footer class="footer"></app-footer>
   </ng-template>
-
 </div>
-<ng-confirm></ng-confirm>
+// TODO changement a faire avec ce ng confirm
+<!-- <ng-confirm></ng-confirm> -->
 <ngx-ui-loader></ngx-ui-loader>

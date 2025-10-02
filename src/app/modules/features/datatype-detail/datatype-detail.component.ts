@@ -10,9 +10,10 @@ export interface dataKeywords {
 }
 
 @Component({
-  selector: 'app-datatype-detail',
-  templateUrl: './datatype-detail.component.html',
-  styleUrls: ['./datatype-detail.component.scss']
+    selector: 'app-datatype-detail',
+    templateUrl: './datatype-detail.component.html',
+    styleUrls: ['./datatype-detail.component.scss'],
+    standalone: false
 })
 export class DatatypeDetailComponent implements OnInit, AfterViewInit {
   showMyContainer: boolean = true;

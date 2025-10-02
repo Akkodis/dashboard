@@ -1,7 +1,8 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-  selector: '[matTableResponsive]'
+    selector: '[matTableResponsive]',
+    standalone: false
 })
 export class MatTableResponsiveDirective {
   constructor () { }

@@ -6,7 +6,7 @@ import { MonitoringComponent } from './monitoring.component';
 import { SharedModule } from '@shared/shared.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [

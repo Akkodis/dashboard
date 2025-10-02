@@ -31,7 +31,8 @@ import { MatConfirmDialogComponent } from './components/mat-confirm-dialog/mat-c
     RouterModule,
     CommonModule,
     MaterialModule,
-    LoadingComponent
+    LoadingComponent,
+    MatConfirmDialogComponent
   ]
 })
 export class SharedModule { }

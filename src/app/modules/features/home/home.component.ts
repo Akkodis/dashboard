@@ -9,10 +9,11 @@ import { map, Observable, Subscription } from 'rxjs';
 import { AppServiceService } from '../profile/appService/app-service.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  providers: [FilterPipe]
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss'],
+    providers: [FilterPipe],
+    standalone: false
 })
 export class HomeComponent implements OnInit {
   quickAccessItems$: Observable<QuickAccessItem[]>;
@@ -25,7 +26,14 @@ export class HomeComponent implements OnInit {
     private dataService: DataService,
     private appService: AppServiceService,
     private router: Router) {
-    let currentUserId = localStorage.getItem('currentUserId') || '{}';
+    // let currentUserId = localStorage.getItem('currentUserId') || '{}';
+    let currentUserId = localStorage.getItem('currentUserId');
+
+    if (!currentUserId) {
+      // Gérer le cas où l'ID n'existe pas
+      this.router.navigate(['/login']); // ou autre traitement logique
+      return;
+    }
     // check in businessInfoDataBase if currentUserId exist
     this.appService.getBusinessInfoById(currentUserId).subscribe(data => {
       if (data == null) {

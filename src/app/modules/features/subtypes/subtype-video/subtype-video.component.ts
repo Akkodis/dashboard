@@ -5,9 +5,10 @@ import { map, Observable } from 'rxjs';
 import { SubtypeVideo } from './interfaces/subType-video';
 
 @Component({
-  selector: 'app-subtype-video',
-  templateUrl: './subtype-video.component.html',
-  styleUrls: ['./subtype-video.component.scss']
+    selector: 'app-subtype-video',
+    templateUrl: './subtype-video.component.html',
+    styleUrls: ['./subtype-video.component.scss'],
+    standalone: false
 })
 export class SubtypeVideoComponent implements OnInit {
   selected: SubtypeVideo;

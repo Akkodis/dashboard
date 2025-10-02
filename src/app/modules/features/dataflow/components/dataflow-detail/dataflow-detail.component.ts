@@ -11,13 +11,14 @@ import { DataflowDialogComponent } from './dataflow-dialog/dataflow-dialog.compo
 import { TopicDialogComponent } from './topic-dialog/topic-dialog.component';
 import { Reservation } from '@shared/interfaces/reservation';
 import { Sla } from '@shared/interfaces/sla';
-import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
+import { BreadcrumbService } from 'xng-breadcrumb';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dataflow-detail',
   templateUrl: './dataflow-detail.component.html',
-  styleUrls: ['./dataflow-detail.component.scss']
+  styleUrls: ['./dataflow-detail.component.scss'],
+  standalone: false
 })
 export class DataflowDetailComponent implements OnInit {
   dataFlow$: Observable<dataFlowData>;
@@ -34,20 +35,20 @@ export class DataflowDetailComponent implements OnInit {
   dataType: string;
   panelOpenState = false;
   isLoading = true;
-  X_userInfo: '';
+  xUserInfo: '';
 
-  constructor(
+  constructor (
     private activeRoute: ActivatedRoute,
     private dataStoreService: DataStoreService,
     private keycloakClientAutheService: KeycloakClientAutheService,
     private dialog: MatDialog,
     private toastr: ToastrService,
-    private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService
+    private breadcrumbService: BreadcrumbService
   ) {
-    this.X_userInfo = this.keycloakClientAutheService['auth']['_userProfile']['id'];
+    this.xUserInfo = this.keycloakClientAutheService['auth']['_userProfile']['id'];
   }
 
-  ngOnInit() {
+  ngOnInit () {
     // -- update Breadcrumbs
     this.updateBreadcrumbs();
 
@@ -67,7 +68,7 @@ export class DataflowDetailComponent implements OnInit {
     });
   }
 
-  subscribe() {
+  subscribe () {
     this.listSla$ = this.dataStoreService.getInstanceTypes(this.idMec).pipe(
       map((data: Sla[]) => {
         return data
@@ -94,7 +95,7 @@ export class DataflowDetailComponent implements OnInit {
     });
   }
 
-  public deleteReservation(idReservation: string, level: string) {
+  public deleteReservation (idReservation: string, level: string) {
     if (
       confirm(
         'Confirm subscription cancellation for dataflow ID: ' +
@@ -113,15 +114,15 @@ export class DataflowDetailComponent implements OnInit {
     }
   }
 
-  private deleteTopic(topicName: string, idReservation: string) {
+  private deleteTopic (topicName: string, idReservation: string) {
     this.dataStoreService.deleteTopic(topicName, idReservation).subscribe();
   }
 
-  public reserveSla(reservation: any) {
+  public reserveSla (reservation: any) {
     this.isLoading = true;
     const data = {
       username: this.keycloakClientAutheService.getUserName(),
-      X_userInfo: this.X_userInfo,
+      X_userInfo: this.xUserInfo,
       datatype: this.dataType,
       instance_type: reservation.type_name
     };
@@ -132,16 +133,16 @@ export class DataflowDetailComponent implements OnInit {
       });
   }
 
-  public showTopic(idReservation: string) {
+  public showTopic (idReservation: string) {
     this.dialog.open(TopicDialogComponent, {
       width: '700px',
       data: { idReservation: idReservation, idMec: this.idMec }
     });
   }
 
-  private reserveTopic(idReservation: string) {
+  private reserveTopic (idReservation: string) {
     this.dataStoreService
-      .reserverTopic(this.tile, this.dataType, this.X_userInfo, '')
+      .reserverTopic(this.tile, this.dataType, this.xUserInfo, '')
       .subscribe({
         next: resulat => {
         },
@@ -153,7 +154,7 @@ export class DataflowDetailComponent implements OnInit {
       });
   }
 
-  private getReservation() {
+  private getReservation () {
     this.reservationsData$ = this.dataStoreService.getDeployedInstances(
       this.idMec
     );
@@ -161,23 +162,18 @@ export class DataflowDetailComponent implements OnInit {
   }
 
   // -- update breadcrumbs
-  updateBreadcrumbs() {
-    // -- extract mapParams from router
+  updateBreadcrumbs () {
     const mapParams = this.activeRoute.snapshot.paramMap;
-    const tile = mapParams.get('tile') ?? undefined;
-    const datatype = mapParams.get('datatype') ?? undefined;
-    const subtype = mapParams.get('subtype') ?? undefined;
-    const idMec = mapParams.get('idMec') ?? undefined;
+    const tile = mapParams.get('tile') ?? '';
+    const datatype = mapParams.get('datatype') ?? '';
+    const subtype = mapParams.get('subtype') ?? '';
+    const idMec = mapParams.get('idMec') ?? '';
 
-    // -- update breadcrumb
-    const breadcrumbs = [
-      { label: 'Home', url: '/home' },
-      { label: 'Data catalogue', url: '/datacatalogue' },
-      { label: 'Datatype', url: '/tile/' + tile },
-      { label: 'Subtype', url: '/tile/' + tile + '/datatype/' + datatype },
-      { label: 'Dataflow', url: '/tile/' + tile + '/datatype/' + datatype + '/dataflow/' + subtype + '/' + idMec },
-      { label: 'Dataflow details', url: '' }
-    ]
-    this.ngDynamicBreadcrumbService.updateBreadcrumb(breadcrumbs);
+    this.breadcrumbService.set('@home', '/home');
+    this.breadcrumbService.set('@datacatalogue', '/datacatalogue');
+    this.breadcrumbService.set('@datatype', `/tile/${tile}`);
+    this.breadcrumbService.set('@subtype', `/tile/${tile}/datatype/${datatype}`);
+    this.breadcrumbService.set('@dataflow', `/tile/${tile}/datatype/${datatype}/dataflow/ ${subtype}/${idMec}`);
+    this.breadcrumbService.set('@dataflowdetails', '');
   }
 }

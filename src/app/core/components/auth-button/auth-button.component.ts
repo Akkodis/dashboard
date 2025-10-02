@@ -3,9 +3,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { KeycloakClientAutheService } from '@core/guards/keycloak-client-auth.service';
 
 @Component({
-  selector: 'app-auth-button',
-  templateUrl: './auth-button.component.html',
-  styleUrls: ['./auth-button.component.scss']
+    selector: 'app-auth-button',
+    templateUrl: './auth-button.component.html',
+    styleUrls: ['./auth-button.component.scss'],
+    standalone: false
 })
 export class AuthButtonComponent implements OnInit {
   isLoggedIn: Promise<boolean>;

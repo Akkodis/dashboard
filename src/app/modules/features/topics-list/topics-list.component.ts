@@ -4,9 +4,10 @@ import { Sla } from '@shared/interfaces/sla';
 import { DataStoreService } from '../datastore/services/datastore.service';
 
 @Component({
-  selector: 'app-topics-list',
-  templateUrl: './topics-list.component.html',
-  styleUrls: ['./topics-list.component.scss']
+    selector: 'app-topics-list',
+    templateUrl: './topics-list.component.html',
+    styleUrls: ['./topics-list.component.scss'],
+    standalone: false
 })
 export class TopicsListComponent implements OnInit {
 

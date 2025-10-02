@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -35,7 +34,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatIconModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    FlexLayoutModule,
     MatSidenavModule,
     MatListModule,
     MatTooltipModule,
@@ -57,7 +55,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatIconModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    FlexLayoutModule,
     MatSidenavModule,
     MatListModule,
     MatTooltipModule,

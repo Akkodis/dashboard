@@ -1,12 +1,21 @@
 <mat-sidenav-container autosize style="overflow: hidden;">
-  <mat-sidenav #sidenav fixedInViewport="false" mode="side" opened="{{ isExpanded }}">
+  <mat-sidenav
+    #sidenav
+    fixedInViewport="false"
+    mode="side"
+    [opened]="isExpanded"
+    [ngClass]="{ 'sidenav-hidden': !isExpanded }"
+    class="transition-all duration-300 ease-in-out"
+  >
     <section [class.sidenav]="isExpanded">
       <mat-list class="nav" *ngFor="let route of routeLinks">
         <a mat-list-item routerLinkActive="active-link" class="hover" [routerLink]=" [route.link] "
           (click)="isBackClicked(route.name)">
-          <mat-icon mat-list-icon [matTooltip]="!isExpanded ? route.name : ''" matTooltipPosition="right">
-            {{ route.icon }}</mat-icon>
-          <p matLine *ngIf="isExpanded">{{ route.name }}</p>
+          <div class="flex items-center gap-2 w-full">
+            <mat-icon mat-list-icon [matTooltip]="!isExpanded ? route.name : ''" matTooltipPosition="right">
+              {{ route.icon }}</mat-icon>
+            <p matLine *ngIf="isExpanded" class="no-material-margin inline-flex items-center" >{{ route.name }}</p>
+          </div>
         </a>
       </mat-list>
     </section>
@@ -16,7 +25,7 @@
       <div class="scrollable">
         <router-outlet></router-outlet>
       </div>
-      <app-ng-dynamic-breadcrumb [symbol]="' > '"></app-ng-dynamic-breadcrumb>
+      <div class="custom-breadcrumb"><xng-breadcrumb></xng-breadcrumb></div>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

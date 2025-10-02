@@ -3,7 +3,9 @@
 @import './app-colors.scss';
 @import './fonts.scss';
 @import './spinners.scss';
-@import '~ngx-toastr/toastr';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html,
 body {
@@ -30,3 +32,4 @@ mat-sidenav[style] {
   width: fit-content;
   background-color: transparent !important;
 }
+

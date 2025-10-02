@@ -1,4 +1,4 @@
-import { AfterViewChecked, ChangeDetectorRef, Component, OnChanges, OnInit } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Reservation } from '@shared/interfaces/reservation';
 import { Sla } from '@shared/interfaces/sla';
 import { DataStoreService } from 'app/modules/features/datastore/services/datastore.service';
@@ -10,14 +10,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { KeycloakClientAutheService } from '@core/guards/keycloak-client-auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Clipboard } from '@angular/cdk/clipboard';
-import { NgDynamicBreadcrumbService } from 'ng-dynamic-breadcrumb';
+import { BreadcrumbService } from 'xng-breadcrumb';
 import { DialogService } from '@core/services/dialog.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-dataflow-subscription',
-  templateUrl: './dataflow-subtype.component.html',
-  styleUrls: ['./dataflow-subtype.component.scss']
+    selector: 'app-dataflow-subscription',
+    templateUrl: './dataflow-subtype.component.html',
+    styleUrls: ['./dataflow-subtype.component.scss'],
+    standalone: false
 })
 export class DataflowSubtypeComponent implements OnInit, AfterViewChecked {
   dataflowIDs$: Observable<number[]>;
@@ -39,9 +40,9 @@ export class DataflowSubtypeComponent implements OnInit, AfterViewChecked {
   hasSubscribed = false;
   chosenInstanceType: string;
   topics: string[];
-  X_userInfo: '';
+  xUserInfo: '';
 
-  constructor(
+  constructor (
     private router: Router,
     private activeRoute: ActivatedRoute,
     private dataStoreService: DataStoreService,
@@ -49,18 +50,19 @@ export class DataflowSubtypeComponent implements OnInit, AfterViewChecked {
     private dialog: MatDialog,
     private toastr: ToastrService,
     private clipboard: Clipboard,
-    private ngDynamicBreadcrumbService: NgDynamicBreadcrumbService,
+    private breadcrumbService: BreadcrumbService,
     private dialogService: DialogService,
     private changeDetectorRef: ChangeDetectorRef
   ) {
     this.currentUser = this.keycloakClientAutheService.getUserName();
-    this.X_userInfo = this.keycloakClientAutheService['auth']['_userProfile']['id'];
+    this.xUserInfo = this.keycloakClientAutheService['auth']['_userProfile']['id'];
   }
-  ngAfterViewChecked(): void {
+
+  ngAfterViewChecked (): void {
     this.changeDetectorRef.detectChanges();
   }
 
-  ngOnInit() {
+  ngOnInit () {
     // -- update Breadcrumbs
     this.updateBreadcrumbs();
 
@@ -81,8 +83,8 @@ export class DataflowSubtypeComponent implements OnInit, AfterViewChecked {
               }
             }
           }
-          this.dataStoreService.getAllTopics(this.X_userInfo).subscribe(data => { this.topics = data; });
-        })
+          this.dataStoreService.getAllTopics(this.xUserInfo).subscribe(data => { this.topics = data; });
+        });
 
         return this.dataStoreService.getDataflowIDs(this.tile, this.datatype, this.subtype);
       })
@@ -91,21 +93,19 @@ export class DataflowSubtypeComponent implements OnInit, AfterViewChecked {
     this.currentUser = this.keycloakClientAutheService.getUserName();
   }
 
-  public getIcon() {
+  public getIcon () {
     return this.icon;
   }
 
   // --- navigate to next page
-  onSelectCard(index: number) {
+  onSelectCard (index: number) {
     this.router.navigate(['tile', this.tile, 'datatype', this.datatype, 'dataflow', this.subtype, this.idMec, 'detail', index]);
   }
 
-  subscribe() {
+  subscribe () {
     this.instanceTypes$ = this.dataStoreService.getInstanceTypes(this.idMec).pipe(
       map((data: Sla[]) => {
-        return data
-          .sort((a, b) => a.type_name.localeCompare(b.type_name))
-          .reverse();
+        return data.sort((a, b) => a.type_name.localeCompare(b.type_name)).reverse();
       })
     );
 
@@ -116,35 +116,28 @@ export class DataflowSubtypeComponent implements OnInit, AfterViewChecked {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.dialogService.openConfirmDialog(`Confirm subscription with ` + result.type_name, '')
+        this.dialogService.openConfirmDialog('Confirm subscription with ' + result.type_name, '')
           .afterClosed().subscribe(resp => {
             if (resp) {
               this.chosenInstanceType = result.type_name;
               this.reserveSla(result);
             }
-          })
+          });
       }
     });
   }
 
-  public deleteReservation(idReservation: string, topic: string) {
-    if (
-      confirm(
-        'Confirm subscription cancellation for ' +
-        topic + '?'
-      )
-    ) {
+  public deleteReservation (idReservation: string, topic: string) {
+    if (confirm('Confirm subscription cancellation for ' + topic + '?')) {
       this.isLoading = true;
-      this.dataStoreService
-        .deleteDeployedInstance(idReservation, this.idMec)
-        .subscribe(() => {
-          this.getDeployedInstances();
-        });
+      this.dataStoreService.deleteDeployedInstance(idReservation, this.idMec).subscribe(() => {
+        this.getDeployedInstances();
+      });
       this.deleteTopic(topic, idReservation);
     }
   }
 
-  public deleteTopics() {
+  public deleteTopics () {
     this.dialogService.openConfirmDialog('Delete all the topics?', '')
       .afterClosed().subscribe(resp => {
         if (resp) {
@@ -155,55 +148,50 @@ export class DataflowSubtypeComponent implements OnInit, AfterViewChecked {
               }
             }
 
-            this.dataStoreService.getAllTopics(this.X_userInfo).subscribe(topics => {
+            this.dataStoreService.getAllTopics(this.xUserInfo).subscribe(topics => {
               for (const topic of topics) {
                 this.dataStoreService.deleteTopic(topic, this.idMec).subscribe();
               }
             })
 
             this.hasSubscribed = false;
-          });
-
+          })
         }
       })
   }
 
-  private deleteTopic(topicName: string, idReservation: string) {
+  private deleteTopic (topicName: string, idReservation: string) {
     // for (const topic of this.topics) {
     this.dataStoreService.deleteTopic(topicName, idReservation).subscribe();
     //  }
   }
 
-  public reserveSla(reservation: any) {
+  public reserveSla (reservation: any) {
     this.isLoading = true;
     const data = {
       username: this.currentUser,
       datatype: this.datatype,
       instance_type: reservation.type_name
     };
-    this.dataStoreService
-      .saveReservation(this.idMec, data)
-      .subscribe(reservation => {
-        this.reserveTopic(reservation.instance_id);
-      });
+    this.dataStoreService.saveReservation(this.idMec, data).subscribe(reservation => {
+      this.reserveTopic(reservation.instance_id);
+    });
     this.hasSubscribed = true;
   }
 
-  public showTopic() {
+  public showTopic () {
     this.dialog.open(TopicDialogComponent, {
       width: '700px'
       // data: { idReservation: idReservation, idMec: this.idMec }
     });
   }
 
-  private reserveTopic(instanceID: string) {
-    this.dataStoreService
-      .reserverTopic(this.tile, this.datatype, this.chosenInstanceType, this.subtype)
+  private reserveTopic (instanceID: string) {
+    this.dataStoreService.reserverTopic(this.tile, this.datatype, this.chosenInstanceType, this.subtype)
       .subscribe({
-        next: resulat => {
-        },
+        next: resulat => {},
         error: msg => {
-          this.toastr.success('Subscription confirmed ')
+          this.toastr.success('Subscription confirmed ');
           this.topicName = msg.error.text;
           this.topics.push(msg.error.text);
           this.getDeployedInstances();
@@ -211,30 +199,25 @@ export class DataflowSubtypeComponent implements OnInit, AfterViewChecked {
       });
   }
 
-  private getDeployedInstances() {
+  private getDeployedInstances () {
     this.deployedInstances$ = this.dataStoreService.getDeployedInstances(this.idMec);
     this.isLoading = false;
   }
 
-  copy(text: string) {
+  copy (text: string) {
     this.clipboard.copy(text);
   }
 
   // -- update breadcrumbs
-  updateBreadcrumbs() {
-    // -- extract mapParams from router
+  updateBreadcrumbs () {
     const mapParams = this.activeRoute.snapshot.paramMap;
-    const tile = mapParams.get('tile') ?? undefined;
-    const datatype = mapParams.get('datatype') ?? undefined;
+    const tile = mapParams.get('tile') ?? '';
+    const datatype = mapParams.get('datatype') ?? '';
 
-    // -- update breadcrumb
-    const breadcrumbs = [
-      { label: 'Home', url: '/home' },
-      { label: 'Data catalogue', url: '/datacatalogue' },
-      { label: 'Datatype', url: '/tile/' + tile },
-      { label: 'Subtype', url: '/tile/' + tile + '/datatype/' + datatype },
-      { label: 'Dataflow', url: '' }
-    ]
-    this.ngDynamicBreadcrumbService.updateBreadcrumb(breadcrumbs);
+    this.breadcrumbService.set('@home', '/home');
+    this.breadcrumbService.set('@datacatalogue', '/datacatalogue');
+    this.breadcrumbService.set('@datatype', `/tile/${tile}`);
+    this.breadcrumbService.set('@subtype', `/tile/${tile}/datatype/${datatype}`);
+    this.breadcrumbService.set('@dataflow', '');
   }
 }

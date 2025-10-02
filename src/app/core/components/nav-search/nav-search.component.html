@@ -3,7 +3,7 @@
         <button mat-button style="padding: 0 5px;">
             <mat-icon>search</mat-icon>
         </button>
-        <mat-form-field floatLabel="never">
+        <mat-form-field floatLabel="auto">
             <input matInput #searchbar [(ngModel)]="searchText">
         </mat-form-field>
         <button *ngIf="searchbar.value.length>0" mat-button mat-icon-button (click)="searchCloseOnX()">

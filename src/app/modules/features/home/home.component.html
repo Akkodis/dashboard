@@ -2,23 +2,27 @@
   <mat-progress-spinner *ngIf="isLoading" color="primary" mode="indeterminate" value="50" diameter="30">
   </mat-progress-spinner>
 </div>
+
 <ng-container *ngIf="!isLoading">
-  <mat-toolbar fxLayout="row inline" fxLayoutGap="30px">
-    <span fxFlex="10%">Quick Access</span>
-    <div fxFlex="90%">
-      <button mat-button *ngFor="let item of (quickAccessItems$ | async)" [fxShow]="item.showOnDesktop"
-        [routerLink]="[item.url]" [fxShow.xs]="item.showOnMobile" [fxShow.sm]="item.showOnTablet"
-        class="quick-access-button">
-        <mat-icon class="mr">{{item.icon}} - </mat-icon>
-        {{item.label}}
-      </button>
-      <button mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide fxShow.sm style="margin: 5%;">
-        <mat-icon>more_vert</mat-icon>
+  <mat-toolbar class="flex flex-row gap-[30px]">
+    <span class="basis-[10%]">Quick Access</span>
+    <div class="basis-[90%] flex items-center">
+      <button mat-button *ngFor="let item of (quickAccessItems$ | async)"
+              class="quick-access-button"
+              [routerLink]="[item.url]"
+              [class.hidden]="!item.showOnDesktop"
+              [class.block.sm:hidden]="!item.showOnTablet"
+              [class.block.xs:hidden]="!item.showOnMobile">
+        <mat-icon class="mr text-purple-900">{{item.icon}} - </mat-icon>
+        <span class="text-purple-900">{{item.label}}</span>
       </button>
       <mat-menu #dropMenu="matMenu">
         <ng-container *ngFor="let item of (quickAccessItems$ | async)">
-          <div [fxShow]="!item.showOnDesktop" [fxShow.sm]="!item.showOnTablet" [fxShow.sm]="!item.showOnMobile"
-            [routerLink]="[item.url]">
+          <div
+            [routerLink]="[item.url]"
+            [class.block]="!item.showOnDesktop"
+            [class.block.sm:hidden]="!item.showOnTablet"
+            [class.block.xs:hidden]="!item.showOnMobile">
             <button mat-menu-item>
               <mat-icon class="mr">{{item.icon}}</mat-icon>
               {{item.label}}
@@ -29,4 +33,4 @@
       </mat-menu>
     </div>
   </mat-toolbar>
-  <ng-container>
+</ng-container>

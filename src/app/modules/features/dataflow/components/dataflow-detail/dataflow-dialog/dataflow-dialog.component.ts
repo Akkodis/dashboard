@@ -10,22 +10,23 @@ import { Reservation } from './../../../../../../shared/interfaces/reservation';
   selector: 'app-dataflow-dialog',
   templateUrl: './dataflow-dialog.component.html',
   styleUrls: ['./dataflow-dialog.component.scss'],
+  standalone: false
 })
 export class DataflowDialogComponent implements OnInit {
   reservationId$: Observable<Reservation>;
   dataType: string;
   listSla$: Observable<Sla[]>;
 
-  constructor(
+  constructor (
     public dialogRef: MatDialogRef<DataflowDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DataDialog
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit (): void {
     this.listSla$ = this.data.listSla;
   }
 
-  cancel() {
+  cancel () {
     this.dialogRef.close();
   }
 }

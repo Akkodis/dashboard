@@ -14,19 +14,20 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 Chart.register(ChartDatasourcePrometheusPlugin);
 
-const CLOUD_PROMETHEUS = "http://52.47.105.88:30090";
-const VICOM_PROMETHEUS = "http://5gmeta.vicomtech.org/prometheus";
+const CLOUD_PROMETHEUS = 'http://52.47.105.88:30090';
+const VICOM_PROMETHEUS = 'http://5gmeta.vicomtech.org/prometheus';
 
 @Component({
-  selector: 'app-monitoring',
-  templateUrl: './monitoring.component.html',
-  styleUrls: ['./monitoring.component.scss']
+    selector: 'app-monitoring',
+    templateUrl: './monitoring.component.html',
+    styleUrls: ['./monitoring.component.scss'],
+    standalone: false
 })
 export class MonitoringComponent implements OnInit {
   currentUser: string;
   currentUserUpperCase: string;
   topics: string[];
-  dataPrice: number; //€ per MB
+  dataPrice: number; // € per MB
   totalVolume: number;
   totalCost: number;
   dataVolumeChart: Chart;
@@ -37,13 +38,14 @@ export class MonitoringComponent implements OnInit {
   cpuUsageChart: Chart;
   selectedDaysTotalVolume: number = 30;
   selectedDaysTopic: number = 30;
-  allTopicLabel = "All"
-  selectedTopic: string = this.route.snapshot.params['id'] ? this.route.snapshot.params['id'] : this.allTopicLabel;
-  PerTopicChartTextLabel = "Per topic";
-  TotalConsumedChartTextLabel = "Total";
+  allTopicLabel = 'All'
+  // selectedTopic: string = this.route.snapshot.params.id ? this.route.snapshot.params.id : this.allTopicLabel;
+  selectedTopic: string ;
+  PerTopicChartTextLabel = 'Per topic';
+  TotalConsumedChartTextLabel = 'Total';
   X_userInfo = '';
-  dailyCostTextLabel = "Daily";
-  accumulatedCostTextLabel = "Accumulated";
+  dailyCostTextLabel = 'Daily';
+  accumulatedCostTextLabel = 'Accumulated';
   availableDays: any[] = [
     { label: 'Last 1 day', value: 1 },
     { label: 'Last 3 days', value: 3 },
@@ -53,7 +55,7 @@ export class MonitoringComponent implements OnInit {
 
   ];
 
-  constructor(
+  constructor (
     private dataStoreService: DataStoreService,
     private monitoringService: MonitoringService,
     private keycloakClientAutheService: KeycloakClientAutheService,
@@ -67,7 +69,7 @@ export class MonitoringComponent implements OnInit {
     this.dataPrice = 0.005;
   }
 
-  ngOnInit(): void {
+  ngOnInit (): void {
     this.ngxUiLoader.start();
     this.dataStoreService.getAllTopics(this.X_userInfo).subscribe(async topics => {
       this.topics = topics;
@@ -76,85 +78,81 @@ export class MonitoringComponent implements OnInit {
       this.ngxUiLoader.stop();
     });
 
-
+    const idParam = this.route.snapshot.params.id;
+    this.selectedTopic = idParam || this.allTopicLabel;
 
     this.monitoringService.getTotalVolume(this.currentUser).subscribe(data => {
-      this.totalVolume = data.data.result[0].value[1]; //Check Promotheus' returned data
+      this.totalVolume = data.data.result[0].value[1]; // Check Promotheus' returned data
     })
 
     this.monitoringService.getTotalCost(this.currentUser, this.dataPrice).subscribe(data => {
-      this.totalCost = data.data.result[0].value[1]; //Check Promotheus' returned data
+      this.totalCost = data.data.result[0].value[1]; // Check Promotheus' returned data
     })
   }
 
-  private createDataVolumePerTopicChart() {
-
-    //Create volume chart
-    //Create chart for all active topics
-    let queries: string[] = [];
-    let labels = new Map<string, string>();
-    if (this.route.snapshot.params['id']) {
-      let query = this.getPerTopicConsumedQuery(this.route.snapshot.params['id']);
+  private createDataVolumePerTopicChart () {
+    // Create volume chart
+    // Create chart for all active topics
+    const queries: string[] = [];
+    const labels = new Map<string, string>();
+    if (this.route.snapshot.params.id) {
+      const query = this.getPerTopicConsumedQuery(this.route.snapshot.params.id);
       queries.push(query);
-      labels.set(this.route.snapshot.params['id'], this.route.snapshot.params['id']);
+      labels.set(this.route.snapshot.params.id, this.route.snapshot.params.id);
     } else {
-      for (let topic of this.topics) {
-        let query = this.getPerTopicConsumedQuery(topic);
+      for (const topic of this.topics) {
+        const query = this.getPerTopicConsumedQuery(topic);
         queries.push(query);
         labels.set(topic, topic);
-
       }
-
     }
     if (this.dataVolumeChart != null) this.dataVolumeChart.destroy();
     this.dataVolumeChart = this.createChart('dataVolumeChart', 'line', CLOUD_PROMETHEUS, queries, this.selectedDaysTopic, labels);
     this.dataVolumeChart.update()
   }
 
-  private createDataVolumeTotalChart() {
-    //Create chart for all topics for the month
-    let totalVolumeQuery = this.getTotalConsumedQuery(this.selectedDaysTotalVolume);
-    let totalLabel = new Map<string, string>([["undefined", "Total consumption"]]);
+  private createDataVolumeTotalChart () {
+    // Create chart for all topics for the month
+    const totalVolumeQuery = this.getTotalConsumedQuery(this.selectedDaysTotalVolume);
+    const totalLabel = new Map<string, string>([['undefined', 'Total consumption']]);
     if (this.dataVolumeTotalChart != null) this.dataVolumeTotalChart.destroy();
     this.dataVolumeTotalChart = this.createChart('dataVolumeTotalChart', 'line', CLOUD_PROMETHEUS, totalVolumeQuery, this.selectedDaysTotalVolume, totalLabel, 10000);
     this.dataVolumeChart.update()
   }
 
-  private createCostCharts() {
+  private createCostCharts () {
     this.createDailyCostChart();
     this.createCostTotalChart();
-
   }
-  private createDailyCostChart() {
-    //Create daily cost chart
 
-    let costQueries: string[] = [];
-    let labels = new Map<string, string>();
+  private createDailyCostChart () {
+    // Create daily cost chart
 
-    for (let topic of this.topics) {
-      let query = 'kafka_consumer_consumer_fetch_manager_metrics_bytes_consumed_total{client_id=~".*' + topic + '.*",container="prometheus-jmx-exporter"}*' + this.dataPrice + '/1000000'
+    const costQueries: string[] = [];
+    const labels = new Map<string, string>();
+
+    for (const topic of this.topics) {
+      const query = 'kafka_consumer_consumer_fetch_manager_metrics_bytes_consumed_total{client_id=~".*' + topic + '.*",container="prometheus-jmx-exporter"}*' + this.dataPrice + '/1000000'
       costQueries.push(query);
       labels.set(topic, topic);
     }
 
-    let dailyCostQuery = 'sum(increase(kafka_consumer_consumer_fetch_manager_metrics_bytes_consumed_total{client_id=~".*' + this.currentUserUpperCase + '.*",container="prometheus-jmx-exporter"}[1d]))*' + this.dataPrice + '/1000000';
+    const dailyCostQuery = 'sum(increase(kafka_consumer_consumer_fetch_manager_metrics_bytes_consumed_total{client_id=~".*' + this.currentUserUpperCase + '.*",container="prometheus-jmx-exporter"}[1d]))*' + this.dataPrice + '/1000000';
 
-    let dailyCostLabel = new Map<string, string>([["undefined", "Daily cost"]]);
+    const dailyCostLabel = new Map<string, string>([['undefined', 'Daily cost']]);
 
     this.costChart = this.createChart('costChart', 'bar', CLOUD_PROMETHEUS, dailyCostQuery, this.selectedDaysTotalVolume, dailyCostLabel, 86400);
   }
 
-  updateTopicChart(topicLabel: string) {
-
-    let queries: string[] = [];
+  updateTopicChart (topicLabel: string) {
+    const queries: string[] = [];
     if (topicLabel === this.allTopicLabel) {
-      for (let topic of this.topics) {
-        let query = this.getPerTopicConsumedQuery(topic);
+      for (const topic of this.topics) {
+        const query = this.getPerTopicConsumedQuery(topic);
         queries.push(query);
       }
       this.router.navigate(['/monitoring'])
     } else {
-
       this.router.navigate(['/monitoring', topicLabel])
       this.createDataVolumePerTopicChart();
       queries[0] = this.getPerTopicConsumedQuery(topicLabel);
@@ -163,17 +161,16 @@ export class MonitoringComponent implements OnInit {
     if (this.dataVolumeChart?.options?.plugins?.['datasource-prometheus']?.query !== undefined) {
       this.dataVolumeChart.options.plugins['datasource-prometheus'].query = queries;
     }
-
   }
 
-  updateTopicChartTime(relativeDays: Number) {
+  updateTopicChartTime (relativeDays: Number) {
     if (this.dataVolumeChart?.options?.plugins?.['datasource-prometheus']?.timeRange?.start !== undefined) {
       this.dataVolumeChart.options.plugins['datasource-prometheus'].timeRange.start = this.convertDaysToMiliSeconds(relativeDays)
     }
     this.dataVolumeChart.update();
   }
 
-  protected onSelectedTabChanged(event: MatTabChangeEvent) {
+  protected onSelectedTabChanged (event: MatTabChangeEvent) {
     if (this.costChart !== undefined) {
       this.costChart.destroy();
     }
@@ -196,8 +193,7 @@ export class MonitoringComponent implements OnInit {
     }
   }
 
-  protected onSelectedDataVolumeSubTabChanged(event: MatTabChangeEvent) {
-
+  protected onSelectedDataVolumeSubTabChanged (event: MatTabChangeEvent) {
     if (event.tab.textLabel === this.PerTopicChartTextLabel) {
       if (this.dataVolumeChart !== undefined) {
         this.updateTopicConsumedChart(this.selectedTopic)
@@ -215,18 +211,15 @@ export class MonitoringComponent implements OnInit {
     }
   }
 
+  private createCostTotalChart () {
+    const totalCostQuery = 'sum(increase(kafka_consumer_consumer_fetch_manager_metrics_bytes_consumed_total{client_id=~".*' + this.currentUserUpperCase + '.*",container="prometheus-jmx-exporter"}[30d]))*' + this.dataPrice + '/1000000';
 
-
-  private createCostTotalChart() {
-
-    let totalCostQuery = 'sum(increase(kafka_consumer_consumer_fetch_manager_metrics_bytes_consumed_total{client_id=~".*' + this.currentUserUpperCase + '.*",container="prometheus-jmx-exporter"}[30d]))*' + this.dataPrice + '/1000000';
-
-    let totalCostLabel = new Map<string, string>([["undefined", "Accumulated cost"]]);
+    const totalCostLabel = new Map<string, string>([['undefined', 'Accumulated cost']]);
 
     this.costTotalChart = this.createChart('costTotalChart', 'line', CLOUD_PROMETHEUS, totalCostQuery, this.selectedDaysTotalVolume, totalCostLabel, 10000);
-
   }
-  protected onSelectedCostSubTabChanged(event: MatTabChangeEvent) {
+
+  protected onSelectedCostSubTabChanged (event: MatTabChangeEvent) {
     if (event.tab.textLabel === this.dailyCostTextLabel) {
       if (this.costChart !== undefined) {
         this.updateDailyCostChartTime(this.selectedDaysTopic)
@@ -243,7 +236,8 @@ export class MonitoringComponent implements OnInit {
       }
     }
   }
-  private createChart(chartID: string, type: keyof ChartTypeRegistry, endpoint: string, query: string | string[], range: number, labels?: Map<string, string>, step?: number) {
+
+  private createChart (chartID: string, type: keyof ChartTypeRegistry, endpoint: string, query: string | string[], range: number, labels?: Map<string, string>, step?: number) {
     const chart = new Chart(chartID, {
       // type : (Type of chart)
       type: type,
@@ -288,13 +282,7 @@ export class MonitoringComponent implements OnInit {
     return chart;
   }
 
-
-
-
-
-
-
-  updateTotalCostChart(relativeDays: Number) {
+  updateTotalCostChart (relativeDays: Number) {
     if (this.costTotalChart?.options?.plugins?.['datasource-prometheus']?.timeRange?.start !== undefined) {
       this.costTotalChart.options.plugins['datasource-prometheus'].timeRange.start = this.convertDaysToMiliSeconds(relativeDays)
     }
@@ -305,11 +293,11 @@ export class MonitoringComponent implements OnInit {
     this.costTotalChart.update();
   }
 
-  updateTopicCostChart(topicLabel: string) {
-    let queries: string[] = [];
+  updateTopicCostChart (topicLabel: string) {
+    const queries: string[] = [];
     if (topicLabel === this.allTopicLabel) {
-      for (let topic of this.topics) {
-        let query = this.getPerTopicCostQuery(topic);
+      for (const topic of this.topics) {
+        const query = this.getPerTopicCostQuery(topic);
         queries.push(query);
       }
     } else {
@@ -322,13 +310,14 @@ export class MonitoringComponent implements OnInit {
     this.costChart.update();
   }
 
-  updateDailyCostChartTime(relativeDays: Number) {
+  updateDailyCostChartTime (relativeDays: Number) {
     if (this.costChart?.options?.plugins?.['datasource-prometheus']?.timeRange?.start !== undefined) {
       this.costChart.options.plugins['datasource-prometheus'].timeRange.start = this.convertDaysToMiliSeconds(relativeDays)
     }
     this.costChart.update();
   }
-  updateTotalDataVolumeChart(relativeDays: Number) {
+
+  updateTotalDataVolumeChart (relativeDays: Number) {
     if (this.dataVolumeTotalChart?.options?.plugins?.['datasource-prometheus']?.timeRange?.start !== undefined) {
       this.dataVolumeTotalChart.options.plugins['datasource-prometheus'].timeRange.start = this.convertDaysToMiliSeconds(relativeDays)
     }
@@ -339,14 +328,12 @@ export class MonitoringComponent implements OnInit {
     this.dataVolumeTotalChart.update();
   }
 
-  updateTopicConsumedChart(topicLabel: string) {
-
-    let queries: string[] = [];
+  updateTopicConsumedChart (topicLabel: string) {
+    const queries: string[] = [];
     if (topicLabel === this.allTopicLabel) {
-      for (let topic of this.topics) {
-        let query = this.getPerTopicConsumedQuery(topic);
+      for (const topic of this.topics) {
+        const query = this.getPerTopicConsumedQuery(topic);
         queries.push(query);
-
       }
       this.router.navigate(['/monitoring'])
     } else {
@@ -363,33 +350,30 @@ export class MonitoringComponent implements OnInit {
     this.dataVolumeChart.update();
   }
 
-  updateTopicConsumedChartTime(relativeDays: Number) {
+  updateTopicConsumedChartTime (relativeDays: Number) {
     if (this.dataVolumeChart?.options?.plugins?.['datasource-prometheus']?.timeRange?.start !== undefined) {
       this.dataVolumeChart.options.plugins['datasource-prometheus'].timeRange.start = this.convertDaysToMiliSeconds(relativeDays)
     }
     this.dataVolumeChart.update();
   }
 
-  getTotalConsumedQuery(days: Number) {
+  getTotalConsumedQuery (days: Number) {
     return 'sum(increase(kafka_consumer_consumer_fetch_manager_metrics_bytes_consumed_total{client_id=~".*' + this.currentUserUpperCase + '.*",container="prometheus-jmx-exporter"}[' + Number(days) + 'd]))/1000000';
   }
 
-  getPerTopicConsumedQuery(topic: string) {
+  getPerTopicConsumedQuery (topic: string) {
     return 'kafka_consumer_consumer_fetch_manager_metrics_bytes_consumed_total{client_id=~".*' + topic + '.*",container="prometheus-jmx-exporter"}/1000000'
   }
 
-  getTotalCostQuery(days: Number) {
+  getTotalCostQuery (days: Number) {
     return 'sum(increase(kafka_consumer_consumer_fetch_manager_metrics_bytes_consumed_total{client_id=~".*' + this.currentUserUpperCase + '.*",container="prometheus-jmx-exporter"}[' + Number(days) + 'd]))*' + this.dataPrice + '/1000000';
   }
 
-  getPerTopicCostQuery(topic: string) {
+  getPerTopicCostQuery (topic: string) {
     return 'sum(increase(kafka_consumer_consumer_fetch_manager_metrics_bytes_consumed_total{client_id=~".*' + topic + '.*",container="prometheus-jmx-exporter"}[1d]))*' + this.dataPrice + '/1000000';
   }
 
-
-  convertDaysToMiliSeconds(days: Number) {
+  convertDaysToMiliSeconds (days: Number) {
     return -24 * Number(days) * 60 * 60 * 1000;
   }
-
-
 }

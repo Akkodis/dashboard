@@ -4,7 +4,8 @@ import { ScreenService } from '@core/services/screen.service';
 import { Subscription } from 'rxjs';
 
 @Directive({
-  selector: '[screenBelowLarge]'
+    selector: '[screenBelowLarge]',
+    standalone: false
 })
 export class ScreenBelowLargeDirective implements OnDestroy {
   private hasView = false;

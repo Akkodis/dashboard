@@ -1,12 +1,12 @@
-# 5GMETA Cloud Platform Dashboard
+# Dashboard
 
-## Introduction
+## Overview
 
 This project hosts the source code of the dashboard module of the 5GMETA platform.
 
 The main objective of the dashboard is to provide a graphical interface to the data consumers allowing them to benefit from the 5GMETA platform features that are otherwise only accessible using API requests.
 
-Its implementation is based on the Angular 14 framework.
+Its implementation is based on the Angular 19 framework.
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ Versions used in dev :
 
 ### Identity management
 
-The dashboard relies on the 5GMETA identity module which is based on Keycloak to authenticate users. Additionally, it uses the user management API to manage user business information. See [identity](https://github.com/5gmeta/identity).
+The dashboard relies on the 5GMETA identity module which is based on Keycloak to authenticate users. Additionally, it uses the user management API to manage user business information.
 
 ### Data catalogue
 
@@ -81,6 +81,7 @@ To deploy in production mode, the following steps needs to be followed:
 
 ## Authors
 
+- Anderson chaville
 - Mejdi Ghorri
 - Kamel Khenessi
 - Mohamed Tarhouni
@@ -90,6 +91,14 @@ To deploy in production mode, the following steps needs to be followed:
 - Laeticia Calice
 - Contact: 5gmeta@akkodis.com
 
-## Conclusion and Roadmap
+## License
 
-#TODO
+Copyright : Copyright 2025 AKKODIS
+
+License : EUPL 1.2 ([https://eupl.eu/1.2/en/](https://eupl.eu/1.2/en/))
+
+The European Union Public Licence (EUPL) is a copyleft free/open source software license created on the initiative of and approved by the European Commission in 23 official languages of the European Union.
+
+Licensed under the EUPL License, Version 1.2 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at [https://eupl.eu/1.2/en/](https://eupl.eu/1.2/en/)
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.

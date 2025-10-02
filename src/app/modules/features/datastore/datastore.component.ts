@@ -11,9 +11,10 @@ export interface dataKeywords {
 }
 
 @Component({
-  selector: 'app-datastore',
-  templateUrl: './datastore.component.html',
-  styleUrls: ['./datastore.component.scss']
+    selector: 'app-datastore',
+    templateUrl: './datastore.component.html',
+    styleUrls: ['./datastore.component.scss'],
+    standalone: false
 })
 export class DatastoreComponent implements OnInit, AfterViewInit {
   dataTile$: Observable<string[]>;

@@ -1,49 +1,122 @@
-<mat-card>
-    <div>
-        <button style="float: right; margin-right: 5px; background-color:white" mat-mini-fab
-            (click)="closeModale()"><mat-icon>close</mat-icon></button>
-    </div>
-    <mat-card-header>
-        <mat-card-title style="margin-top: 11px;">Topic details</mat-card-title>
-    </mat-card-header>
-    <div mat-row class="center">
-        <div style="margin-left: 10px; margin-top: 10px;">
-            Topic name:
-            <div class="microlight" style="margin-left: 45px">
-                <label>{{inputData.title}}</label>
-                <button mat-icon-button (click)="copy(inputData.title)"><mat-icon>content_copy</mat-icon></button>
-            </div>
-            <hr />
-            Broker IP address:
-            <div class="microlight" style="margin-left: 10px">
-                <label>52.47.105.88</label>
-                <button mat-icon-button (click)="copy('52.47.105.88')"><mat-icon>content_copy</mat-icon></button>
-            </div>
-            <hr />
-            Broker ports:&emsp;
+<div class="bg-white rounded shadow-md p-4 relative max-w-md mx-auto">
+  <!-- Close button -->
+  <button
+    (click)="closeModale()"
+    class="absolute top-2 right-2 bg-white text-gray-600 hover:text-gray-900 rounded-full p-1 shadow-md"
+    aria-label="Close"
+    title="Close"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
 
-            <div class="microlight">
-                <label>31090</label>
-                <button mat-icon-button (click)="copy('31090')"><mat-icon>content_copy</mat-icon></button>
-            </div>
-            <div class="microlight">
-                <label>31091</label>
-                <button mat-icon-button (click)="copy('31091')"><mat-icon>content_copy</mat-icon></button>
-            </div>
-            <div class="microlight">
-                <label>31092</label>
-                <button mat-icon-button (click)="copy('31092')"><mat-icon>content_copy</mat-icon></button>
-            </div>
-            <hr />
-        </div>
-    </div>
-    <div mat-dialog-content>
-    </div>
-    <div mat-dialog-actions align="end">
-        <button mat-mini-fab color="" (click)="monitoring(inputData.title)"
-            style="margin-left: 15px;"><mat-icon>legend_toggle</mat-icon></button>
-        <button mat-mini-fab color="warn" (click)="delete(inputData.title)"
-            style="margin-right: 5px;"><mat-icon>delete</mat-icon>
+  <!-- Card header -->
+  <header class="mb-4 pt-3">
+    <h2 class="text-xl font-semibold">Topic details</h2>
+  </header>
+
+  <div class="space-y-4">
+    <!-- Topic name -->
+    <div>
+      <span class="font-medium">Topic name:</span>
+      <div class="flex items-center ml-11 space-x-2 text-sm text-gray-600">
+        <label>{{inputData.title}}</label>
+        <button
+          mat-icon-button
+          (click)="copy(inputData.title)"
+          class="text-gray-500 hover:text-gray-700"
+          aria-label="Copy topic name"
+          title="Copy topic name"
+        >
+          <mat-icon>content_copy</mat-icon>
         </button>
+      </div>
     </div>
-</mat-card>
+    <hr />
+
+    <!-- Broker IP address -->
+    <div>
+      <span class="font-medium">Broker IP address:</span>
+      <div class="flex items-center ml-2 text-sm text-gray-600">
+        <label>52.47.105.88</label>
+        <button
+          mat-icon-button
+          (click)="copy('52.47.105.88')"
+          class="text-gray-500 hover:text-gray-700 ml-2"
+          aria-label="Copy broker IP"
+          title="Copy broker IP"
+        >
+          <mat-icon>content_copy</mat-icon>
+        </button>
+      </div>
+    </div>
+    <hr />
+
+    <!-- Broker ports -->
+    <div>
+      <span class="font-medium">Broker ports:</span>
+      <div class="space-y-1 ml-0">
+        <div class="flex items-center text-sm text-gray-600">
+          <label>31090</label>
+          <button
+            mat-icon-button
+            (click)="copy('31090')"
+            class="text-gray-500 hover:text-gray-700 ml-2"
+            aria-label="Copy port 31090"
+            title="Copy port 31090"
+          >
+            <mat-icon>content_copy</mat-icon>
+          </button>
+        </div>
+        <div class="flex items-center text-sm text-gray-600">
+          <label>31091</label>
+          <button
+            mat-icon-button
+            (click)="copy('31091')"
+            class="text-gray-500 hover:text-gray-700 ml-2"
+            aria-label="Copy port 31091"
+            title="Copy port 31091"
+          >
+            <mat-icon>content_copy</mat-icon>
+          </button>
+        </div>
+        <div class="flex items-center text-sm text-gray-600">
+          <label>31092</label>
+          <button
+            mat-icon-button
+            (click)="copy('31092')"
+            class="text-gray-500 hover:text-gray-700 ml-2"
+            aria-label="Copy port 31092"
+            title="Copy port 31092"
+          >
+            <mat-icon>content_copy</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+
+  <!-- Actions -->
+  <div class="flex justify-end space-x-4 mt-4">
+    <button
+      mat-mini-fab
+      color=""
+      (click)="monitoring(inputData.title)"
+      class="bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full p-2 shadow"
+      aria-label="Monitoring"
+      title="Monitoring"
+    >
+      <mat-icon>legend_toggle</mat-icon>
+    </button>
+    <button
+      mat-mini-fab
+      color="warn"
+      (click)="delete(inputData.title)"
+      class="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 shadow"
+      aria-label="Delete"
+      title="Delete"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>

@@ -1,41 +1,63 @@
-<div *screenLarge class="container">
-  <mat-card *ngIf="!hasSubscribed">
-    <mat-card-title class="center" matLine>
-      No topics yet
-    </mat-card-title>
-  </mat-card>
-  <mat-card *ngIf="hasSubscribed" style="margin-bottom: 10px;">
-    <div mat-row class="center">
-      <div class="col-8">
-        <div class="microlight" style="margin-right: 10px">52.47.105.88
-          <mat-card-actions align="end">
-            <button mat-icon-button (click)="copy('52.47.105.88')">
-              <mat-icon>content_copy</mat-icon>
-            </button>
-          </mat-card-actions>
-        </div>
-        <div class="microlight" style="margin-right: 10px">31090
-          <mat-card-actions align="end">
-            <button mat-icon-button (click)="copy('31090')">
-              <mat-icon>content_copy</mat-icon>
-            </button>
-          </mat-card-actions>
-        </div>
-        <div class="microlight" style="margin-right: 10px">31091
-          <mat-card-actions align="end">
-            <button mat-icon-button (click)="copy('31091')">
-              <mat-icon>content_copy</mat-icon>
-            </button>
-          </mat-card-actions>
-        </div>
-        <div class="microlight">31092
-          <mat-card-actions align="end">
-            <button mat-icon-button (click)="copy('31092')">
-              <mat-icon>content_copy</mat-icon>
-            </button>
-          </mat-card-actions>
-        </div>
+<div *screenLarge class="container mx-auto px-4">
+  <!-- Si pas abonné -->
+  <div *ngIf="!hasSubscribed" class="bg-white shadow rounded p-6 text-center">
+    <h2 class="text-lg font-semibold">No topics yet</h2>
+  </div>
+
+  <!-- Si abonné -->
+  <div *ngIf="hasSubscribed" class="bg-white shadow rounded p-4 mb-2">
+    <div class="flex flex-wrap justify-start space-x-4">
+      <div class="flex items-center space-x-2 text-sm text-gray-600">
+        <span>52.47.105.88</span>
+        <button
+          mat-icon-button
+          (click)="copy('52.47.105.88')"
+          class="text-gray-500 hover:text-gray-700"
+          aria-label="Copy IP"
+          title="Copy IP"
+        >
+          <mat-icon>content_copy</mat-icon>
+        </button>
+      </div>
+
+      <div class="flex items-center space-x-2 text-sm text-gray-600">
+        <span>31090</span>
+        <button
+          mat-icon-button
+          (click)="copy('31090')"
+          class="text-gray-500 hover:text-gray-700"
+          aria-label="Copy Port 31090"
+          title="Copy Port 31090"
+        >
+          <mat-icon>content_copy</mat-icon>
+        </button>
+      </div>
+
+      <div class="flex items-center space-x-2 text-sm text-gray-600">
+        <span>31091</span>
+        <button
+          mat-icon-button
+          (click)="copy('31091')"
+          class="text-gray-500 hover:text-gray-700"
+          aria-label="Copy Port 31091"
+          title="Copy Port 31091"
+        >
+          <mat-icon>content_copy</mat-icon>
+        </button>
+      </div>
+
+      <div class="flex items-center space-x-2 text-sm text-gray-600">
+        <span>31092</span>
+        <button
+          mat-icon-button
+          (click)="copy('31092')"
+          class="text-gray-500 hover:text-gray-700"
+          aria-label="Copy Port 31092"
+          title="Copy Port 31092"
+        >
+          <mat-icon>content_copy</mat-icon>
+        </button>
       </div>
     </div>
-  </mat-card>
+  </div>
 </div>

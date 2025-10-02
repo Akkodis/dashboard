@@ -1,5 +1,5 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import {} from '@angular/common/http';
 import { ScreenService } from './services/screen.service';
 
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 import { EnsureModuleLoadedOnceGuard } from './guards/ensure-module-loaded-once.guard';
 import { DirectivesModule } from 'app/modules/directives/directives.module';
 import { AuthButtonComponent } from './components/auth-button/auth-button.component';
-import { NgDynamicBreadcrumbModule } from 'ng-dynamic-breadcrumb';
+import { BreadcrumbComponent, BreadcrumbItemDirective } from 'xng-breadcrumb';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,8 @@ import { NgDynamicBreadcrumbModule } from 'ng-dynamic-breadcrumb';
     TranslateModule,
     FormsModule,
     DirectivesModule,
-    NgDynamicBreadcrumbModule
+    BreadcrumbComponent,
+    BreadcrumbItemDirective
   ],
   providers: [
     ScreenService

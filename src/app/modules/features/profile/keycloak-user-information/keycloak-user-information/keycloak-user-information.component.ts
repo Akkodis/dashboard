@@ -5,30 +5,32 @@ import { Router } from '@angular/router';
 import { InputHandler } from 'concurrently';
 
 @Component({
-  selector: 'app-keycloak-user-information',
-  templateUrl: './keycloak-user-information.component.html',
-  styleUrls: ['./keycloak-user-information.component.scss']
+    selector: 'app-keycloak-user-information',
+    templateUrl: './keycloak-user-information.component.html',
+    styleUrls: ['./keycloak-user-information.component.scss'],
+    standalone: false
 })
 export class KeycloakUserInformationComponent implements OnInit {
   @Input() userName: string;
   @Input() email: string;
   @Input() firstName: string;
   @Input() lastName: string;
-
-  formGroup = this.fb.group({
-    email: null,
-    userName: null,
-    firstName: [null, Validators.required],
-    lastName: [null, Validators.required],
-  });
+  formGroup!: FormGroup;
 
   hasUnitNumber = false;
 
-  constructor(private fb: FormBuilder) { }
+  constructor (private fb: FormBuilder) { }
 
-  ngOnInit(): void { }
+  ngOnInit (): void {
+    this.formGroup = this.fb.group({
+      email: null,
+      userName: null,
+      firstName: [null, Validators.required],
+      lastName: [null, Validators.required]
+    });
+  }
 
-  onSubmit() {
+  onSubmit () {
 
   }
 }

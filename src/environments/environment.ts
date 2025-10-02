@@ -4,12 +4,12 @@
 export const environment = {
   production: false,
   backendUrl: {
-    apiMonitoring: "http://grafana.5gmeta-platform.eu",
-    apiDataStore: "https://5gmeta-platform.eu",
+    apiMonitoring: "https://cloudplatform.francecentral.cloudapp.azure.com/grafana/",
+    apiDataStore: "https://cloudplatform.francecentral.cloudapp.azure.com/api/v1/",
     apiMockData: "http://localhost:3000"
   },
   auth: {
-    domain: "http://5gmeta-platform.eu/identity/", /* To debug with keycloack on localhost, change this value to "http://localhost:8080" */
+    domain: "https://cloudplatform.francecentral.cloudapp.azure.com/identity/", /* To debug with keycloack on localhost, change this value to "http://localhost:8080" */
     clientId: "5gmeta_login",
     realm: "5gmeta",
     redirectUri: window.location.origin + "/home",

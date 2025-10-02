@@ -6,15 +6,14 @@ import { MatConfirmDialogComponent } from '@shared/components/mat-confirm-dialog
   providedIn: 'root'
 })
 export class DialogService {
+  constructor (private dialog: MatDialog) { }
 
-  constructor(private dialog: MatDialog) { }
-
-  openConfirmDialog(message: any, payload: any) {
+  openConfirmDialog (message: any, payload: any) {
     return this.dialog.open(MatConfirmDialogComponent, {
       width: '390px',
       panelClass: 'confirm-dialog-container',
       disableClose: true,
-      position: { top: "75px" },
+      position: { top: '75px' },
       data: {
         message: message,
         payload: payload

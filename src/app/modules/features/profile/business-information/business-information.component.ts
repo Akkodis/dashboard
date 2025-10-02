@@ -13,9 +13,10 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
 @Component({
-  selector: 'app-business-information',
-  templateUrl: './business-information.component.html',
-  styleUrls: ['./business-information.component.scss']
+    selector: 'app-business-information',
+    templateUrl: './business-information.component.html',
+    styleUrls: ['./business-information.component.scss'],
+    standalone: false
 })
 export class BusinessInformationComponent implements OnInit {
 

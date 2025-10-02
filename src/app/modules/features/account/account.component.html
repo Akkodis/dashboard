@@ -1,6 +1,6 @@
 <div class="container">
-  <div fxLayout="row" fxLayoutAlign="space-around stretch">
-    <div class="filter-box" fxFlex="15%" fxFlexFill>
+  <div class="flex flex-row justify-around items-stretch">
+    <div class="filter-box basis-[15%] w-full h-full">
       <mat-list>
         <!-- Filters  -->
         <h1 matSubheader>Cost management + Billing</h1>
@@ -36,10 +36,11 @@
         </mat-list-item>
       </mat-list>
     </div>
-    <div class="data-box" fxFlex="85%">
+
+    <div class="data-box basis-[85%]">
       <!-- toolbar of actions -->
-      <mat-toolbar fxLayout="row inline" fxLayoutGap="30px" style="background-color: transparent;" fxLayoutGap="25px">
-        <div fxFlex="90%">
+      <mat-toolbar class="flex flex-row gap-[25px] bg-transparent">
+        <div class="w-[90%]">
           <button mat-stroked-button class="account-action-button">Action1</button>
           <button mat-stroked-button class="account-action-button">Action2</button>
           <button mat-stroked-button class="account-action-button">Action3</button>
@@ -52,10 +53,11 @@
           <button mat-stroked-button class="account-action-button">Action10</button>
         </div>
       </mat-toolbar>
+
       <!-- Account boxes -->
-      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="25px">
+      <div class="flex flex-row flex-wrap justify-center items-center gap-[25px]">
         <div *ngFor="let i of [0,1,2,3,4,5,6,7,8,9]" class="databox">
-          <div fxFlex="1 1 auto">
+          <div class="flex-1">
             <mat-card>
               <mat-list>
                 <mat-list-item>
@@ -65,8 +67,8 @@
                 </mat-list-item>
                 <mat-divider matInset></mat-divider>
                 <mat-card-content>
-                  <div fxLayout="row" fxLayoutGap="10">
-                    <div fxFlex="90%">
+                  <div class="flex flex-row gap-[10px]">
+                    <div class="w-[90%]">
                       <p>
                         The Shiba Inu is the smallest of the six original and distinct spitz
                         breeds of dog from Japan.
@@ -85,7 +87,7 @@
                 </mat-list-item>
               </mat-list>
               <mat-divider></mat-divider>
-              <mat-card-actions align="end">
+              <mat-card-actions class="flex justify-end">
                 <button mat-button color="primary" class="text-upper">
                   <mat-icon matListAvatar>table_view</mat-icon>
                 </button>

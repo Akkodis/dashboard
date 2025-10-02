@@ -4,15 +4,16 @@ import { DomSanitizer } from '@angular/platform-browser'
 import { TranslateService } from '@ngx-translate/core'
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    standalone: false
 })
 export class AppComponent {
   title = 'fivegmeta';
   public isExpanded = true;
   supportedLanguages = ['en', 'fr']
-  constructor(private translateservice: TranslateService,
+  constructor (private translateservice: TranslateService,
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer
   ) {
@@ -27,7 +28,7 @@ export class AppComponent {
     this.matIconRegistry.addSvgIcon('twitter', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/twitter.svg'))
   }
 
-  public toggleMenu() {
+  public toggleMenu () {
     this.isExpanded = !this.isExpanded;
   }
 }

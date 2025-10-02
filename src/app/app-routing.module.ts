@@ -2,18 +2,21 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { KeycloakClientAuthGuard } from '@core/guards/keycloak-client-auth.guard';
 
-
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
-    data: { title: 'home', breadcrumb: [{ label: 'Home', url: '' }] }
+    data: { title: 'home', breadcrumb: 'Home' }
   },
   {
     path: 'home',
     loadChildren: () => import('./modules/features/home/home.module').then(m => m.HomeModule),
-    data: { title: 'home', breadcrumb: [{ label: 'Home', url: '' }] }
+    data:
+      {
+        title: '',
+        breadcrumb: ''
+      }
   },
   {
     path: 'datacatalogue',
@@ -22,10 +25,7 @@ const routes: Routes = [
     data:
     {
       title: 'datacatalogue',
-      breadcrumb: [
-        { label: 'Home', url: '/home' },
-        { label: 'Data catalogue', url: '' }
-      ]
+      breadcrumb: 'Data catalogue'
     }
   },
   {
@@ -214,7 +214,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [
+    RouterModule.forRoot(routes, {
+      useHash: true,
+      paramsInheritanceStrategy: 'always',
+      canceledNavigationResolution: 'computed',
+      urlUpdateStrategy: 'deferred'
+    })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

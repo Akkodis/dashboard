@@ -8,7 +8,7 @@ export class KeycloakClientAutheService {
   constructor(private auth: KeycloakService) { }
 
   public isLoggedIn(): Promise<boolean> {
-    return this.auth.isLoggedIn();
+    return Promise.resolve(this.auth.isLoggedIn());
   }
 
   public login(): Promise<void> {

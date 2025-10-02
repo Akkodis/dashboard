@@ -2,9 +2,10 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { NavsearchService } from './navsearch.service';
 
 @Component({
-  selector: 'app-nav-search',
-  templateUrl: './nav-search.component.html',
-  styleUrls: ['./nav-search.component.scss']
+    selector: 'app-nav-search',
+    templateUrl: './nav-search.component.html',
+    styleUrls: ['./nav-search.component.scss'],
+    standalone: false
 })
 export class NavSearchComponent implements OnInit {
   @ViewChild('searchbar') searchbar: ElementRef;

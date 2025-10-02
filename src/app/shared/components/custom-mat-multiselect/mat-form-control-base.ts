@@ -2,7 +2,8 @@ import { Input, HostBinding, OnDestroy, Component } from '@angular/core';
 import { Subject } from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 @Component({
-  template: ''
+    template: '',
+    standalone: false
 })
 export class MatFormFieldControlBase implements OnDestroy {
 

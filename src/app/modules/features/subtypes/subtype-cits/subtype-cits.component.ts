@@ -9,9 +9,10 @@ import { SubtypeData } from '@shared/interfaces/subtype';
 import { SubtypeCits } from './interfaces/subtype-city';
 
 @Component({
-  selector: 'app-subtype-cits',
-  templateUrl: './subtype-cits.component.html',
-  styleUrls: ['./subtype-cits.component.scss']
+    selector: 'app-subtype-cits',
+    templateUrl: './subtype-cits.component.html',
+    styleUrls: ['./subtype-cits.component.scss'],
+    standalone: false
 })
 export class SubtypeCitsComponent implements OnInit {
   quickAccessItems$: Observable<QuickAccessItem[]>;

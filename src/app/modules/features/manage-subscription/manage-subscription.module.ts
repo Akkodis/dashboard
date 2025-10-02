@@ -6,18 +6,18 @@ import { ManageSubscriptionComponent } from './manage-subscription.component';
 import { DataFlowModule } from '../dataflow/components/dataflow.module';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { SharedModule } from '@shared/shared.module';
-
-
+import { TopicDialogComponent } from '../dataflow/components/dataflow-detail/topic-dialog/topic-dialog.component';
 
 @NgModule({
   declarations: [
-    ManageSubscriptionComponent
   ],
   imports: [
     CommonModule,
     ManageSubscriptionRoutingModule,
     DataFlowModule,
-    SharedModule
+    SharedModule,
+    TopicDialogComponent,
+    ManageSubscriptionComponent
   ],
   providers: [
     {

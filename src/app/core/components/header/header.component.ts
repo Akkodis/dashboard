@@ -4,9 +4,10 @@ import { KeycloakClientAutheService } from '@core/guards/keycloak-client-auth.se
 import { ScreenService } from '@core/services/screen.service'
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+    standalone: false
 })
 export class HeaderComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<void>();

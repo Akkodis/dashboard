@@ -10,8 +10,8 @@ export class AppServiceService {
 
   constructor(private http: HttpClient) { }
   // URL_DB = 'http://20.199.90.04'
-  URL_DB = 'http://5gmeta-platform.eu/identity/user-business-info';
-  private url_businessInfos = 'http://5gmeta-platform.eu/identity/user-business-info/';
+  URL_DB = 'https://cloudplatform.francecentral.cloudapp.azure.com/';
+  private url_businessInfos = 'https://cloudplatform.francecentral.cloudapp.azure.com/user-business-info';
   // 'http://localhost:8080/user-business-info';
   PORT_NUM = '8080';
   getData() {

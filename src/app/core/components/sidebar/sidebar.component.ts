@@ -2,16 +2,16 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, EventEmitter, Input, OnInit, Output 
 import { NavigationService } from '@core/services/navigation.service';
 import { RouteLink } from '@shared/interfaces/route-link';
 
-
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
+  standalone: false
 })
 export class SidebarComponent implements OnInit {
   @Input() isExpanded: boolean = false;
   @Output() toggleMenu = new EventEmitter();
-  constructor(private navigation: NavigationService) { }
+  constructor (private navigation: NavigationService) { }
   public routeLinks: RouteLink[] = [
     { link: 'back', name: 'Back', icon: 'arrow_back' },
     { link: 'home', name: 'Home', icon: 'home' },
@@ -19,7 +19,7 @@ export class SidebarComponent implements OnInit {
     { link: 'manage-subscription', name: 'Subscriptions', icon: 'subscriptions' },
     // { link: 'topics', name: 'My topics', icon: 'topic' }
     // todo : hide link in sidebar menu for demo
-    { link: 'monitoring', name: 'Monitoring', icon: 'legend_toggle' },
+    { link: 'monitoring', name: 'Monitoring', icon: 'legend_toggle' }
     /*
     { link: 'serviceapi', name: 'Services', icon: 'api' },
     { link: 'costmanagement', name: 'Cost Management', icon: 'account_balance' },
@@ -28,12 +28,12 @@ export class SidebarComponent implements OnInit {
     */
   ];
 
-  ngOnInit(): void {
+  ngOnInit (): void {
   }
-  isBackClicked(clickedButton: string) {
-    if (clickedButton == "Back") {
+
+  isBackClicked (clickedButton: string) {
+    if (clickedButton == 'Back') {
       this.navigation.back()
     }
-
   }
 }
