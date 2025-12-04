@@ -1,11 +1,13 @@
 ### STAGE 1: Compile and build angular codebase ###
 
 # Use official node image as the base image
-FROM node:22-trixie-slim AS build
+FROM node:24.9 AS build
 # Set the working directory
 WORKDIR /usr/local/app
 # Add the source code to app
 COPY . .
+RUN npm install domhandler
+RUN npm install keycloak-js
 # Install all dependencies
 RUN npm install
 # Generate the build of the application
