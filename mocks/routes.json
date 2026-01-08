@@ -1,0 +1,7 @@
+{
+  "/datatypes/:datatype/properties": "/SubtypeCits/properties",
+  "/mec/tile/:id": "/mec/tile?id=:id",
+  "/api/v1/query_range*": "/prometheus-query",
+  "/user-business-info/:id": "/user-business-info",
+  "/mec/tile": "/mectile"
+}

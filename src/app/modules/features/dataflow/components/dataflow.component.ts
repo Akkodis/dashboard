@@ -96,12 +96,12 @@ export class DataFlowComponent implements OnInit {
           queryParams: { subtype: '', datatype: this.dataType, tile: this.tile, idMec: this.idMec }
         });
       } else {
-        // if (environment.withMockData) {
-        //   // for the use of mockData, will be replaced by the above
-        //   this.subtypes = data;
-        // } else {
+        if (environment.withMockData) {
+          // for the use of mockData, will be replaced by the above
+          this.subtypes = data;
+        } else {
         this.subtypes = data.dataSubType;
-        // }
+        }
 
         // -------------------------------------------------------
         for (const subtype of this.subtypes) {

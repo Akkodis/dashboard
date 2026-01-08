@@ -11,11 +11,13 @@ import { MonitoringService } from './services/monitoring.service';
 import { getElapsedDaysOfCurrentMonth } from '@core/utils';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { environment } from 'environments/environment';
 
 Chart.register(ChartDatasourcePrometheusPlugin);
 
 const CLOUD_PROMETHEUS = 'http://52.47.105.88:30090';
 const VICOM_PROMETHEUS = 'http://5gmeta.vicomtech.org/prometheus';
+const MOCK_ENDPOINT = 'http://localhost:3000';
 
 @Component({
     selector: 'app-monitoring',
@@ -69,6 +71,10 @@ export class MonitoringComponent implements OnInit {
     this.dataPrice = 0.005;
   }
 
+  private getPrometheusEndpoint(): string {
+    return environment.withMockData ? MOCK_ENDPOINT : CLOUD_PROMETHEUS;
+  }
+
   ngOnInit (): void {
     this.ngxUiLoader.start();
     this.dataStoreService.getAllTopics(this.X_userInfo).subscribe(async topics => {
@@ -107,7 +113,7 @@ export class MonitoringComponent implements OnInit {
       }
     }
     if (this.dataVolumeChart != null) this.dataVolumeChart.destroy();
-    this.dataVolumeChart = this.createChart('dataVolumeChart', 'line', CLOUD_PROMETHEUS, queries, this.selectedDaysTopic, labels);
+    this.dataVolumeChart = this.createChart('dataVolumeChart', 'line', this.getPrometheusEndpoint(), queries, this.selectedDaysTopic, labels);
     this.dataVolumeChart.update()
   }
 
@@ -116,7 +122,7 @@ export class MonitoringComponent implements OnInit {
     const totalVolumeQuery = this.getTotalConsumedQuery(this.selectedDaysTotalVolume);
     const totalLabel = new Map<string, string>([['undefined', 'Total consumption']]);
     if (this.dataVolumeTotalChart != null) this.dataVolumeTotalChart.destroy();
-    this.dataVolumeTotalChart = this.createChart('dataVolumeTotalChart', 'line', CLOUD_PROMETHEUS, totalVolumeQuery, this.selectedDaysTotalVolume, totalLabel, 10000);
+    this.dataVolumeTotalChart = this.createChart('dataVolumeTotalChart', 'line', this.getPrometheusEndpoint(), totalVolumeQuery, this.selectedDaysTotalVolume, totalLabel, 10000);
     this.dataVolumeChart.update()
   }
 
@@ -141,7 +147,7 @@ export class MonitoringComponent implements OnInit {
 
     const dailyCostLabel = new Map<string, string>([['undefined', 'Daily cost']]);
 
-    this.costChart = this.createChart('costChart', 'bar', CLOUD_PROMETHEUS, dailyCostQuery, this.selectedDaysTotalVolume, dailyCostLabel, 86400);
+    this.costChart = this.createChart('costChart', 'bar', this.getPrometheusEndpoint(), dailyCostQuery, this.selectedDaysTotalVolume, dailyCostLabel, 86400);
   }
 
   updateTopicChart (topicLabel: string) {
@@ -216,7 +222,7 @@ export class MonitoringComponent implements OnInit {
 
     const totalCostLabel = new Map<string, string>([['undefined', 'Accumulated cost']]);
 
-    this.costTotalChart = this.createChart('costTotalChart', 'line', CLOUD_PROMETHEUS, totalCostQuery, this.selectedDaysTotalVolume, totalCostLabel, 10000);
+    this.costTotalChart = this.createChart('costTotalChart', 'line', this.getPrometheusEndpoint(), totalCostQuery, this.selectedDaysTotalVolume, totalCostLabel, 10000);
   }
 
   protected onSelectedCostSubTabChanged (event: MatTabChangeEvent) {

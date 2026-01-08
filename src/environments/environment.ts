@@ -9,7 +9,7 @@ export const environment = {
     apiMockData: "http://localhost:3000"
   },
   auth: {
-    domain: "https://cloudplatform.francecentral.cloudapp.azure.com/identity/", /* To debug with keycloack on localhost, change this value to "http://localhost:8080" */
+    domain: "http://localhost:8080",
     clientId: "5gmeta_login",
     realm: "5gmeta",
     redirectUri: window.location.origin + "/home",
@@ -17,7 +17,7 @@ export const environment = {
   dev: {
     serverUrl: "http://localhost:6060",
   },
-  withMockData: false
+  withMockData: true
 };
 
 /*

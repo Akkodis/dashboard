@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { dataFlowData } from '../../datastore/models/dataflow-data.model';
 import { Observable } from 'rxjs';
+import { environment } from 'environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class AppServiceService {
   constructor(private http: HttpClient) { }
   // URL_DB = 'http://20.199.90.04'
   URL_DB = 'https://cloudplatform.francecentral.cloudapp.azure.com/';
-  private url_businessInfos = 'https://cloudplatform.francecentral.cloudapp.azure.com/user-business-info';
+  private url_businessInfos = environment.withMockData ? environment.backendUrl.apiMockData + '/user-business-info' : 'https://cloudplatform.francecentral.cloudapp.azure.com/user-business-info';
   // 'http://localhost:8080/user-business-info';
   PORT_NUM = '8080';
   getData() {
