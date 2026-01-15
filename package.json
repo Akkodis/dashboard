@@ -9,7 +9,7 @@
     "lint": "eslint src/**/*.ts",
     "test": "ng test",
     "generate": "node ./mocks/generateData.js > ./mocks/database.json",
-    "server": "json-server --watch ./mocks/database.json"
+    "server": "json-server --watch ./mocks/database.json --routes ./mocks/routes-dev.json"
   },
   "private": true,
   "dependencies": {
@@ -40,7 +40,7 @@
     "keycloak-angular": "^19.0.2",
     "keycloak-js": "^19.0.3",
     "leaflet": "^1.9.3",
-    "lint": "^0.7.0",
+    "lint": "^1.1.2",
     "momentjs": "^2.0.0",
     "ngx-toastr": "^15.2.2",
     "ngx-ui-loader": "^13.0.0",
@@ -70,9 +70,9 @@
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.2.0",
-    "image-webpack-loader": "^8.1.0",
+    "image-webpack-loader": "^8.0.1",
     "jasmine-core": "~4.0.1",
-    "json-server": "^0.17.3",
+    "json-server": "0.17.4",
     "karma": "~6.3.17",
     "karma-chrome-launcher": "~3.1.1",
     "karma-coverage": "~2.2.0",

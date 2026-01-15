@@ -52,32 +52,76 @@ It relies on the 5GMETA platform metering features supported by Prometheus.
 
 !["Subscription"](miscelania/monitoring.svg)
 
+## Local Setup
+
+### Prerequisites
+
+Before starting, ensure you have:
+- Node.js (version compatible with Angular 19)
+- npm package manager
+
+### Installing Dependencies
+
+```bash
+npm install
+```
+
+### Running the Application in Development
+
+The application works with two services running in parallel:
+
+#### 1. **Start the Mock Server (optional - for local testing)**
+
+```bash
+npm run server
+```
+
+This launches **json-server** on `http://localhost:3000` with mock routes defined in `mocks/routes-dev.json`.
+
+**Available Mock Routes:**
+- `/datatypes/:datatype/properties` → `/SubtypeCits/properties`
+- `/mec/tile/:id` → `/mec/tile?id=:id`
+- `/api/v1/query_range*` → `/prometheus-query`
+- `/user-business-info/:id` → `/user-business-info`
+- `/mec/tile` → `/mectile`
+
+#### 2. **Start the Angular Application**
+
+In another terminal:
+
+```bash
+npm start
+```
+
+The application will be available at `http://localhost:4200`
+
 ## Deployment
 
-### Development version
+### Development Version
 
 To deploy a development version, the following commands are necessary:
 
-```
-cd src
+```bash
 npm install
 npm start
 ```
 
 Then open your browser and go to `http://localhost:4200`
 
-### Production version
+### Production Version
 
-To deploy in production mode, the following steps needs to be followed:
+To deploy in production mode, the following steps need to be followed:
 - Build the application
     - `npm build`
     - A `dist` directory should be generated
 - Deploy the application
     - Serve the `dist` folder content with a production web server
     - Precise instructions depend on the chosen web server
-- Configure fall back to `index.html`
+- Configure fallback to `index.html`
     - The procedure is dependent on the chosen web server, but examples of configuration are provided on the [official Angular website](https://angular.io/guide/deployment).
 - Start the web server
+
+> **Important:** Mock routes are disabled in production. The application will connect directly to the backend APIs.
 
 ## Authors
 
