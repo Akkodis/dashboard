@@ -6,7 +6,7 @@ This project hosts the source code of the dashboard module of the 5GMETA platfor
 
 The main objective of the dashboard is to provide a graphical interface to the data consumers allowing them to benefit from the 5GMETA platform features that are otherwise only accessible using API requests.
 
-Its implementation is based on the Angular 19 framework.
+Its implementation is based on the Angular 20 framework.
 
 ## Prerequisites
 
@@ -57,7 +57,7 @@ It relies on the 5GMETA platform metering features supported by Prometheus.
 ### Prerequisites
 
 Before starting, ensure you have:
-- Node.js (version compatible with Angular 19)
+- Node.js (version compatible with Angular 20)
 - npm package manager
 
 ### Installing Dependencies
@@ -107,6 +107,33 @@ npm start
 ```
 
 Then open your browser and go to `http://localhost:4200`
+
+
+#### Migration — Updated Libraries
+
+| Package                             | Before     | After      |
+|-------------------------------------|------------|------------|
+| `@angular/animations`               | `^19.2.18` | `^20.2.10` |
+| `@angular/cdk`                      | `^19.2.18` | `^20.2.10` |
+| `@angular/common`                   | `^19.x`    | `^20.2.10` |
+| `@angular/compiler`                 | `^19.x`    | `^20.2.10` |
+| `@angular/core`                     | `^19.x`    | `^20.2.10` |
+| `@angular/forms`                    | `^19.x`    | `^20.2.10` |
+| `@angular/google-maps`              | `^19.2.18` | `^20.2.10` |
+| `@angular/material`                 | `^19.2.18` | `^20.2.10` |
+| `@angular/platform-browser`         | `^19.x`    | `^20.2.10` |
+| `@angular/platform-browser-dynamic` | `^19.x`    | `^20.2.10` |
+| `@angular/router`                   | `^19.x`    | `^20.2.10` |
+| `@angular-devkit/build-angular`     | `^19.2.18` | `^20.2.10` |
+| `@angular/cli`                      | `^19.x`    | `^20.2.10` |
+| `@angular/compiler-cli`             | `^19.x`    | `^20.2.10` |
+| `@angular/localize`                 | `^19.x`    | `^20.2.10` |
+| `keycloak-angular`                  | `^19.0.2`  | `^20.0.0`  |
+| `keycloak-js`                       | `^19.0.3`  | `^20.0.0`  |
+| `ngx-toastr`                        | `^15.2.2`  | `^16.0.0`  |
+| `ngx-ui-loader`                     | `^13.0.0`  | `^14.0.0`  |
+| `xng-breadcrumb`                    | `^13.0.0`  | `^14.0.0`  |
+| `angular-confirmation-popover`      | `^6.0.0`   | `^7.0.0`   |
 
 ### Production Version
 
