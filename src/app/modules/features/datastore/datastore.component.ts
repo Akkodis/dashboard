@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { DataStoreService } from './services/datastore.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import tileMath from 'quadkey-tilemath';
+import * as tileMath from 'quadkey-tilemath';
 import * as L from 'leaflet';
 
 export interface dataKeywords {

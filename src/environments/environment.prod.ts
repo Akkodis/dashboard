@@ -2,7 +2,8 @@ export const environment = {
   production: true,
   backendUrl: {
     apiMonitoring: 'https://5gmeta-platform.eu/grafana/',
-    apiDataStore: 'https://5gmeta-platform.eu'
+    apiDataStore: 'https://5gmeta-platform.eu',
+    apiMockData: ''
   },
   auth: {
     domain: 'https://5gmeta-platform.eu/identity/',
@@ -13,4 +14,6 @@ export const environment = {
   dev: {
     serverUrl: ''
   }
+  ,
+  withMockData: false
 };
