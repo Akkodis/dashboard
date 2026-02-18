@@ -30,7 +30,18 @@ a:hover {
   // padding: 1.25rem 1.875rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  padding-left: 16px;
+}
+
+.ft-main-item:first-child {
+  padding-left: 0;
+}
+.ft-main-item:last-child {
+  margin-left: auto;
+  padding-right: 16px;
 }
 
 .ft-main-item {
@@ -71,6 +82,8 @@ a:hover {
 
   .ft-main {
     justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
   }
   .ft-main-item {
     padding: 0;

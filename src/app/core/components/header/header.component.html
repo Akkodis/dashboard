@@ -8,28 +8,11 @@ permet de gérer la résponsivité de l'application via typescipt au lieu de scs
       </button>
       <img class="toolbar-title" src="assets/images/Logo5G_bgdark.png" alt="5GMETA LOGO" width="120px"
            height="fit-content">
-      <!-- <app-nav-search></app-nav-search> -->
       <div class="menu-area flex flex-1 flex-row justify-end">
         <ul class="navigation-items flex flex-row gap-[30px]">
-          <!-- Settings -->
-          <!--
-          <li class="hidden xs:block">
-            <button mat-icon-button>
-              <mat-icon> settings </mat-icon>
-            </button>
-          </li>
-          -->
-          <!-- Help Outline -->
-          <!--
-          <li class="hidden xs:block">
-            <button mat-icon-button>
-              <mat-icon> help_outline </mat-icon>
-            </button>
-          </li>
-          -->
           <!-- Profil -->
           <li>
-            <button mat-icon-button [matMenuTriggerFor]="auth" style="padding-bottom: 65px; margin-right: 20px;">
+            <button mat-icon-button [matMenuTriggerFor]="auth" class="auth-button">
               {{username}}
               <mat-icon> person </mat-icon>
             </button>
@@ -46,7 +29,6 @@ permet de gérer la résponsivité de l'application via typescipt au lieu de scs
               <app-auth-button></app-auth-button>
             </mat-menu>
           </li>
-          <!-- <li> <span>{{firstname}} {{lastname}}</span></li> -->
         </ul>
       </div>
     </mat-toolbar-row>

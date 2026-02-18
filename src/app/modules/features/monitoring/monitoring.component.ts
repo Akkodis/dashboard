@@ -273,13 +273,21 @@ export class MonitoringComponent implements OnInit {
               if (serie?.labels?.client_id === undefined) {
                 return labels!.get('undefined');
               } else {
+                const clientId = serie?.labels?.client_id;
+                // Try to match client_id against known labels (topics)
                 for (const label of labels!.keys()) {
-                  if (serie?.labels?.client_id?.includes(label)) {
+                  if (clientId?.includes(label)) {
                     return labels!.get(label);
                   }
                 }
+                // If no exact match found, try to extract the topic name (last part after hyphen or dot)
+                const topicMatch = clientId?.split(/[-._]/)?.pop();
+                if (topicMatch && labels!.has(topicMatch)) {
+                  return labels!.get(topicMatch);
+                }
+                // Last resort: return just the client_id value without any prefix
+                return clientId || serie?.metric?.toString();
               }
-              return serie?.metric?.toString();
             }
           }
         }

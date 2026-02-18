@@ -135,6 +135,20 @@ p {
   margin: 30px;
 }
 
+@media only screen and (max-width: 799px) {
+  .map-container {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    margin: 10px;
+    height: calc(100vh - 120px);
+  }
+
+  .map-frame {
+    height: 100%;
+  }
+}
+
 .map-frame {
   border: 2px solid black;
   height: 100%;

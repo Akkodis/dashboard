@@ -130,8 +130,8 @@ Then open your browser and go to `http://localhost:4200`
 | `@angular/localize`                 | `^19.x`    | `^20.2.10` |
 | `keycloak-angular`                  | `^19.0.2`  | `^20.0.0`  |
 | `keycloak-js`                       | `^19.0.3`  | `^20.0.0`  |
-| `ngx-toastr`                        | `^15.2.2`  | `^16.0.0`  |
-| `ngx-ui-loader`                     | `^13.0.0`  | `^14.0.0`  |
+| `ngx-toastr`                        | `^15.2.2`  | `^19.0.0`  |
+| `ngx-ui-loader`                     | `^13.0.0`  | `^19.0.0`  |
 | `xng-breadcrumb`                    | `^13.0.0`  | `^14.0.0`  |
 | `angular-confirmation-popover`      | `^6.0.0`   | `^7.0.0`   |
 
@@ -160,6 +160,7 @@ To deploy in production mode, the following steps need to be followed:
 - Wisal Mechi
 - Theo Dupont
 - Laeticia Calice
+- Hammou Bahaddou
 - Contact: 5gmeta@akkodis.com
 
 ## License

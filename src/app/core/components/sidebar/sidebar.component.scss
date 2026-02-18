@@ -4,6 +4,30 @@
   width: 240px;
 }
 
+@media only screen and (max-width: 799px) {
+  /* Collapse sidebar to icons-only on small screens */
+  .sidenav {
+    width: 60px;
+  }
+
+  .sidenav .no-material-margin,
+  .sidenav p[matLine] {
+    display: none !important;
+  }
+
+  .sidenav .mat-list-item,
+  .sidenav a {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    justify-content: center;
+  }
+
+  /* Ensure main content doesn't get pushed beyond viewport */
+  mat-sidenav-content {
+    margin-left: 60px !important;
+  }
+}
+
 .toggle {
   width: 100%;
   display: flex;
