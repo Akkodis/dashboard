@@ -1,4 +1,4 @@
-@import 'app-colors';
+@use 'app-colors' as *;
 
 $toolbar-title-padding: 32px !default;
 $toolbar-title-padding-min: 16px !default;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 import { DataStoreService } from '../datastore/services/datastore.service';
 
@@ -26,6 +26,11 @@ const MOCK_ENDPOINT = 'http://localhost:3000';
     standalone: false
 })
 export class MonitoringComponent implements OnInit {
+  @ViewChild('dataVolumeCanvas') dataVolumeCanvas!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('dataVolumeTotalCanvas') dataVolumeTotalCanvas!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('costCanvas') costCanvas!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('costTotalCanvas') costTotalCanvas!: ElementRef<HTMLCanvasElement>;
+
   currentUser: string;
   currentUserUpperCase: string;
   topics: string[];
@@ -77,11 +82,13 @@ export class MonitoringComponent implements OnInit {
 
   ngOnInit (): void {
     this.ngxUiLoader.start();
-    this.dataStoreService.getAllTopics(this.X_userInfo).subscribe(async topics => {
+    this.dataStoreService.getAllTopics(this.X_userInfo).subscribe(topics => {
       this.topics = topics;
-      await new Promise(f => setTimeout(f, 250)); // Ensure that this.createAllCharts is called after this.topics is set
-      this.createDataVolumePerTopicChart();
-      this.ngxUiLoader.stop();
+      // wait for Angular to render the *ngIf and canvas element
+      setTimeout(() => {
+        this.createDataVolumePerTopicChart();
+        this.ngxUiLoader.stop();
+      });
     });
 
     const idParam = this.route.snapshot.params.id;
@@ -113,8 +120,11 @@ export class MonitoringComponent implements OnInit {
       }
     }
     if (this.dataVolumeChart != null) this.dataVolumeChart.destroy();
-    this.dataVolumeChart = this.createChart('dataVolumeChart', 'line', this.getPrometheusEndpoint(), queries, this.selectedDaysTopic, labels);
-    this.dataVolumeChart?.update();
+    // ensure canvas is rendered (e.g. after *ngIf or tab switch)
+    setTimeout(() => {
+      this.dataVolumeChart = this.createChart(this.dataVolumeCanvas.nativeElement, 'line', this.getPrometheusEndpoint(), queries, this.selectedDaysTopic, labels);
+      this.dataVolumeChart?.update();
+    });
   }
 
   private createDataVolumeTotalChart () {
@@ -122,8 +132,10 @@ export class MonitoringComponent implements OnInit {
     const totalVolumeQuery = this.getTotalConsumedQuery(this.selectedDaysTotalVolume);
     const totalLabel = new Map<string, string>([['undefined', 'Total consumption']]);
     if (this.dataVolumeTotalChart != null) this.dataVolumeTotalChart.destroy();
-    this.dataVolumeTotalChart = this.createChart('dataVolumeTotalChart', 'line', this.getPrometheusEndpoint(), totalVolumeQuery, this.selectedDaysTotalVolume, totalLabel, 10000);
-    this.dataVolumeTotalChart?.update();
+    setTimeout(() => {
+      this.dataVolumeTotalChart = this.createChart(this.dataVolumeTotalCanvas.nativeElement, 'line', this.getPrometheusEndpoint(), totalVolumeQuery, this.selectedDaysTotalVolume, totalLabel, 10000);
+      this.dataVolumeTotalChart?.update();
+    });
   }
 
   private createCostCharts () {
@@ -147,8 +159,10 @@ export class MonitoringComponent implements OnInit {
 
     const dailyCostLabel = new Map<string, string>([['undefined', 'Daily cost']]);
 
-    this.costChart = this.createChart('costChart', 'bar', this.getPrometheusEndpoint(), dailyCostQuery, this.selectedDaysTotalVolume, dailyCostLabel, 86400);
-    this.costChart?.update();
+    setTimeout(() => {
+      this.costChart = this.createChart(this.costCanvas.nativeElement, 'bar', this.getPrometheusEndpoint(), dailyCostQuery, this.selectedDaysTotalVolume, dailyCostLabel, 86400);
+      this.costChart?.update();
+    });
   }
 
   updateTopicChart (topicLabel: string) {
@@ -215,8 +229,10 @@ export class MonitoringComponent implements OnInit {
 
     const totalCostLabel = new Map<string, string>([['undefined', 'Accumulated cost']]);
 
-    this.costTotalChart = this.createChart('costTotalChart', 'line', this.getPrometheusEndpoint(), totalCostQuery, this.selectedDaysTotalVolume, totalCostLabel, 10000);
-    this.costTotalChart?.update();
+    setTimeout(() => {
+      this.costTotalChart = this.createChart(this.costTotalCanvas.nativeElement, 'line', this.getPrometheusEndpoint(), totalCostQuery, this.selectedDaysTotalVolume, totalCostLabel, 10000);
+      this.costTotalChart?.update();
+    });
   }
 
   protected onSelectedCostSubTabChanged (event: MatTabChangeEvent) {
@@ -237,8 +253,8 @@ export class MonitoringComponent implements OnInit {
     }
   }
 
-  private createChart (chartID: string, type: keyof ChartTypeRegistry, endpoint: string, query: string | string[], range: number, labels?: Map<string, string>, step?: number) {
-    const chart = new Chart(chartID, {
+  private createChart(element: HTMLCanvasElement, type: keyof ChartTypeRegistry, endpoint: string, query: string | string[], range: number, labels?: Map<string, string>, step?: number) {
+    const chart = new Chart(element, {
       // type : (Type of chart)
       type: type,
       data: { labels: [], datasets: [] }, // Values on X-Axis (empty if using Promotheus data source)

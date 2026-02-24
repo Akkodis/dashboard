@@ -1,4 +1,4 @@
-@import "app-colors";
+@use "app-colors" as *;
 * {
   box-sizing: border-box;
   // font-family: "Lato", sans-serif;

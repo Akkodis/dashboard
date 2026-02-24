@@ -1,8 +1,8 @@
-<div class="bg-white rounded shadow-md p-4 relative max-w-md mx-auto">
+<div class="bg-white rounded shadow-md p-4 relative w-full max-w-full">
   <!-- Close button -->
   <button
     (click)="closeModale()"
-    class="absolute top-2 right-2 bg-white text-gray-600 hover:text-gray-900 rounded-full p-1 shadow-md"
+    class="absolute top-0 left-0 -mt-2 -ml-2 z-10 bg-white text-gray-600 hover:text-gray-900 rounded-full p-1 shadow-md"
     aria-label="Close"
     title="Close"
   >
@@ -10,7 +10,7 @@
   </button>
 
   <!-- Card header -->
-  <header class="mb-4 pt-3">
+  <header class="mb-4 pt-3 text-center">
     <h2 class="text-xl font-semibold">Topic details</h2>
   </header>
 
@@ -97,7 +97,7 @@
   </div>
 
   <!-- Actions -->
-  <div class="flex justify-end space-x-4 mt-4">
+  <div class="flex justify-center space-x-4 mt-4">
     <button
       mat-mini-fab
       color=""

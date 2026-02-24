@@ -186,6 +186,15 @@ export class DataStoreService {
   getTopicByName(topicName: string, X_userInfo: string): Observable<any> {
     const httpHeaders = new HttpHeaders();
     httpHeaders.set('X_Userinfo', X_userInfo);
+
+    if (environment.withMockData) {
+      // json‑server mock backend only exposes a flat array of topic strings so
+      // doing a GET /topics/:name returns 404. the topic detail component does
+      // not actually use the returned object yet, it just needs the name, so
+      // return an observable that emits a simple object and completes.
+      return of({ name: topicName });
+    }
+
     return this.http.get<any>(`${this.getBaseUrl()}/topics/${topicName}`, { headers: httpHeaders });
   }
   getAllTopics(X_userInfo: string): Observable<any> {

@@ -6,6 +6,7 @@ import {Router, RouterModule} from '@angular/router';
 import { KeycloakClientAutheService } from '@core/guards/keycloak-client-auth.service';
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-topic-dialog.module.ts',
@@ -21,21 +22,33 @@ export class TopicDetailComponent implements OnInit {
   inputData: any;
   topicData: any;
   X_userInfo = '';
+
   constructor (@Inject(MAT_DIALOG_DATA) public data: any,
     private ref: MatDialogRef<TopicDetailComponent>,
     private dataStoreService: DataStoreService,
     private keycloakClientAutheService: KeycloakClientAutheService,
     private clipboard: Clipboard,
     private route: Router) {
-    this.X_userInfo = this.keycloakClientAutheService['auth']['_userProfile']['id'];
   }
 
   ngOnInit (): void {
+    this.X_userInfo = this.keycloakClientAutheService?.['auth']?.['_userProfile']?.['id'] || '';
     this.inputData = this.data;
-    if (this.inputData.title.length > 0) {
-      this.dataStoreService.getTopicByName(this.inputData.title, this.X_userInfo).subscribe(data => {
-        this.topicData = data;
-      })
+
+    if (this.inputData.title && this.inputData.title.length > 0) {
+      this.dataStoreService.getTopicByName(this.inputData.title, this.X_userInfo)
+        .subscribe(
+          data => {
+            this.topicData = data;
+          },
+          err => {
+            if (err.status === 404) {
+              console.debug('topic not found, ignoring', this.inputData.title);
+            } else {
+              throw err;
+            }
+          }
+        );
     }
   }
 

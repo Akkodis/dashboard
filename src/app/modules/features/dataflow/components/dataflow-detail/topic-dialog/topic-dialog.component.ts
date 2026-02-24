@@ -36,7 +36,7 @@ export class TopicDialogComponent implements OnInit {
   @Input() topicDialogInModale = true;
   topicData: any[];
   selectedTopics: any[] = [];
-  xUserInfo: '';
+  xUserInfo: string = '';
 
   constructor (
     public dialogRef: MatDialogRef<TopicDialogComponent>,
@@ -51,18 +51,20 @@ export class TopicDialogComponent implements OnInit {
     private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.xUserInfo = this.keycloakClientAutheService['auth']['_userProfile']['id'];
   }
 
   ngOnInit (): void {
-    this.ngxUiLoader.start()
+    // extract user ID safely during initialization when auth is ready
+    this.xUserInfo = this.keycloakClientAutheService?.['auth']?.['_userProfile']?.['id'] || '';
+
+    this.ngxUiLoader.start();
     this.topicData$ = this.dataStoreService.getAllTopics(this.xUserInfo);
     this.topicData$.subscribe(data => {
       this.topicData = data;
       this.ngxUiLoader.stop();
     }, error => {
       this.ngxUiLoader.stop();
-    })
+    });
   }
 
   copy (text: string) {
@@ -167,7 +169,15 @@ export class TopicDialogComponent implements OnInit {
     }
   }
 
+  trackByTopic(index: number, topic: any): any {
+    return topic;
+  }
+
   cancel () {
-    this.navigation.back()
+    if (this.dialogRef) {
+      this.dialogRef.close();
+    } else {
+      this.navigation.back();
+    }
   }
 }

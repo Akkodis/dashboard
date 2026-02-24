@@ -14,7 +14,7 @@
 
       </div>
       <mat-dialog-content style="width: 100%;">
-        <div *ngFor="let topic of (topicData$ | async); let i = index ">
+        <div *ngFor="let topic of (topicData$ | async); let i = index; trackBy: trackByTopic">
           <mat-card>
             <div class="row" style="display: inline-flex; text-align: center;">
               <div style="width: 60%; margin: auto;" class="container" (click)="detailTopic(topic)"><label

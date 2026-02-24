@@ -45,7 +45,7 @@
                   <div *ngIf="topics" class="flex flex-row justify-evenly items-center gap-[25px]">
                     <mat-card class="chartDiv">
                       <mat-card-title class="center">Volume of consumed data per active topic in MB</mat-card-title>
-                      <canvas id="dataVolumeChart"></canvas>
+                      <canvas #dataVolumeCanvas id="dataVolumeChart"></canvas>
                     </mat-card>
                   </div>
                 </div>
@@ -66,7 +66,7 @@
                   <div class="flex flex-row justify-center items-center">
                     <mat-card class="chartDiv">
                       <mat-card-title class="center">Total volume of consumed data in MB</mat-card-title>
-                      <canvas id="dataVolumeTotalChart"></canvas>
+                      <canvas #dataVolumeTotalCanvas id="dataVolumeTotalChart"></canvas>
                     </mat-card>
                   </div>
                 </div>
@@ -108,7 +108,7 @@
                   <div *ngIf="topics" class="flex flex-row justify-evenly items-center gap-[25px]">
                     <mat-card class="chartDiv">
                       <mat-card-title class="center">Daily cost in €</mat-card-title>
-                      <canvas id="costChart"></canvas>
+                      <canvas #costCanvas id="costChart"></canvas>
                     </mat-card>
                   </div>
                 </div>
@@ -129,7 +129,7 @@
                   <div class="flex flex-row justify-center items-center">
                     <mat-card class="chartDiv">
                       <mat-card-title class="center">Accumulated cost in €</mat-card-title>
-                      <canvas id="costTotalChart"></canvas>
+                      <canvas #costTotalCanvas id="costTotalChart"></canvas>
                     </mat-card>
                   </div>
                 </div>

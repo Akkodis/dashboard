@@ -1,4 +1,4 @@
-@import "../../../../styles/app-colors.scss";
+@use "../../../../styles/app-colors" as *;
 
 .databox{
     max-width: 500px;
