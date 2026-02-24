@@ -32,12 +32,12 @@ export class MonitoringComponent implements OnInit {
   dataPrice: number; // € per MB
   totalVolume: number;
   totalCost: number;
-  dataVolumeChart: Chart;
-  dataVolumeTotalChart: Chart;
-  costChart: Chart;
-  costTotalChart: Chart;
-  memoryUsageChart: Chart;
-  cpuUsageChart: Chart;
+  dataVolumeChart: Chart | null = null;
+  dataVolumeTotalChart: Chart | null = null;
+  costChart: Chart | null = null;
+  costTotalChart: Chart | null = null;
+  memoryUsageChart: Chart | null = null;
+  cpuUsageChart: Chart | null = null;
   selectedDaysTotalVolume: number = 30;
   selectedDaysTopic: number = 30;
   allTopicLabel = 'All'
@@ -114,7 +114,7 @@ export class MonitoringComponent implements OnInit {
     }
     if (this.dataVolumeChart != null) this.dataVolumeChart.destroy();
     this.dataVolumeChart = this.createChart('dataVolumeChart', 'line', this.getPrometheusEndpoint(), queries, this.selectedDaysTopic, labels);
-    this.dataVolumeChart.update()
+    this.dataVolumeChart?.update();
   }
 
   private createDataVolumeTotalChart () {
@@ -123,7 +123,7 @@ export class MonitoringComponent implements OnInit {
     const totalLabel = new Map<string, string>([['undefined', 'Total consumption']]);
     if (this.dataVolumeTotalChart != null) this.dataVolumeTotalChart.destroy();
     this.dataVolumeTotalChart = this.createChart('dataVolumeTotalChart', 'line', this.getPrometheusEndpoint(), totalVolumeQuery, this.selectedDaysTotalVolume, totalLabel, 10000);
-    this.dataVolumeChart.update()
+    this.dataVolumeTotalChart?.update();
   }
 
   private createCostCharts () {
@@ -148,6 +148,7 @@ export class MonitoringComponent implements OnInit {
     const dailyCostLabel = new Map<string, string>([['undefined', 'Daily cost']]);
 
     this.costChart = this.createChart('costChart', 'bar', this.getPrometheusEndpoint(), dailyCostQuery, this.selectedDaysTotalVolume, dailyCostLabel, 86400);
+    this.costChart?.update();
   }
 
   updateTopicChart (topicLabel: string) {
@@ -173,29 +174,21 @@ export class MonitoringComponent implements OnInit {
     if (this.dataVolumeChart?.options?.plugins?.['datasource-prometheus']?.timeRange?.start !== undefined) {
       this.dataVolumeChart.options.plugins['datasource-prometheus'].timeRange.start = this.convertDaysToMiliSeconds(relativeDays)
     }
-    this.dataVolumeChart.update();
+    this.dataVolumeChart?.update();
   }
 
   protected onSelectedTabChanged (event: MatTabChangeEvent) {
-    if (this.costChart !== undefined) {
-      this.costChart.destroy();
-    }
-
-    if (this.costTotalChart !== undefined) {
-      this.costTotalChart.destroy();
-    }
-
-    if (this.cpuUsageChart !== undefined) {
-      this.cpuUsageChart.destroy();
-    }
-
-    if (this.memoryUsageChart !== undefined) {
-      this.memoryUsageChart.destroy();
-    }
+    this.costChart?.destroy();
+    this.costTotalChart?.destroy();
+    this.cpuUsageChart?.destroy();
+    this.memoryUsageChart?.destroy();
 
     // Create cost charts
     if (event.tab.textLabel === 'Cost') {
-      this.createCostCharts();
+      /* Give DOM time to render before creating charts */
+      setTimeout(() => {
+        this.createCostCharts();
+      }, 100);
     }
   }
 
@@ -223,6 +216,7 @@ export class MonitoringComponent implements OnInit {
     const totalCostLabel = new Map<string, string>([['undefined', 'Accumulated cost']]);
 
     this.costTotalChart = this.createChart('costTotalChart', 'line', this.getPrometheusEndpoint(), totalCostQuery, this.selectedDaysTotalVolume, totalCostLabel, 10000);
+    this.costTotalChart?.update();
   }
 
   protected onSelectedCostSubTabChanged (event: MatTabChangeEvent) {
@@ -304,7 +298,7 @@ export class MonitoringComponent implements OnInit {
       this.costTotalChart.options.plugins['datasource-prometheus'].query = this.getTotalCostQuery(relativeDays);
     }
 
-    this.costTotalChart.update();
+    this.costTotalChart?.update();
   }
 
   updateTopicCostChart (topicLabel: string) {
@@ -321,14 +315,14 @@ export class MonitoringComponent implements OnInit {
     if (this.costChart?.options?.plugins?.['datasource-prometheus']?.query !== undefined) {
       this.costChart.options.plugins['datasource-prometheus'].query = queries;
     }
-    this.costChart.update();
+    this.costChart?.update();
   }
 
   updateDailyCostChartTime (relativeDays: Number) {
     if (this.costChart?.options?.plugins?.['datasource-prometheus']?.timeRange?.start !== undefined) {
       this.costChart.options.plugins['datasource-prometheus'].timeRange.start = this.convertDaysToMiliSeconds(relativeDays)
     }
-    this.costChart.update();
+    this.costChart?.update();
   }
 
   updateTotalDataVolumeChart (relativeDays: Number) {
@@ -339,7 +333,7 @@ export class MonitoringComponent implements OnInit {
       this.dataVolumeTotalChart.options.plugins['datasource-prometheus'].query = this.getTotalConsumedQuery(relativeDays);
     }
 
-    this.dataVolumeTotalChart.update();
+    this.dataVolumeTotalChart?.update();
   }
 
   updateTopicConsumedChart (topicLabel: string) {
@@ -361,14 +355,14 @@ export class MonitoringComponent implements OnInit {
       this.dataVolumeChart.options.plugins['datasource-prometheus'].query = queries;
     }
 
-    this.dataVolumeChart.update();
+    this.dataVolumeChart?.update();
   }
 
   updateTopicConsumedChartTime (relativeDays: Number) {
     if (this.dataVolumeChart?.options?.plugins?.['datasource-prometheus']?.timeRange?.start !== undefined) {
       this.dataVolumeChart.options.plugins['datasource-prometheus'].timeRange.start = this.convertDaysToMiliSeconds(relativeDays)
     }
-    this.dataVolumeChart.update();
+    this.dataVolumeChart?.update();
   }
 
   getTotalConsumedQuery (days: Number) {
