@@ -14,11 +14,11 @@
     <h2 class="text-xl font-semibold">Topic details</h2>
   </header>
 
-  <div class="space-y-4">
+  <div class="space-y-4 text-center">
     <!-- Topic name -->
     <div>
       <span class="font-medium">Topic name:</span>
-      <div class="flex items-center ml-11 space-x-2 text-sm text-gray-600">
+      <div class="flex items-center justify-center space-x-2 text-sm text-gray-600">
         <label>{{inputData.title}}</label>
         <button
           mat-icon-button
@@ -36,12 +36,12 @@
     <!-- Broker IP address -->
     <div>
       <span class="font-medium">Broker IP address:</span>
-      <div class="flex items-center ml-2 text-sm text-gray-600">
+      <div class="flex items-center justify-center space-x-2 text-sm text-gray-600">
         <label>52.47.105.88</label>
         <button
           mat-icon-button
           (click)="copy('52.47.105.88')"
-          class="text-gray-500 hover:text-gray-700 ml-2"
+          class="text-gray-500 hover:text-gray-700"
           aria-label="Copy broker IP"
           title="Copy broker IP"
         >
@@ -54,37 +54,37 @@
     <!-- Broker ports -->
     <div>
       <span class="font-medium">Broker ports:</span>
-      <div class="space-y-1 ml-0">
-        <div class="flex items-center text-sm text-gray-600">
+      <div class="space-y-1 flex flex-col items-center">
+        <div class="flex items-center space-x-2 text-sm text-gray-600">
           <label>31090</label>
           <button
             mat-icon-button
             (click)="copy('31090')"
-            class="text-gray-500 hover:text-gray-700 ml-2"
+            class="text-gray-500 hover:text-gray-700"
             aria-label="Copy port 31090"
             title="Copy port 31090"
           >
             <mat-icon>content_copy</mat-icon>
           </button>
         </div>
-        <div class="flex items-center text-sm text-gray-600">
+        <div class="flex items-center space-x-2 text-sm text-gray-600">
           <label>31091</label>
           <button
             mat-icon-button
             (click)="copy('31091')"
-            class="text-gray-500 hover:text-gray-700 ml-2"
+            class="text-gray-500 hover:text-gray-700"
             aria-label="Copy port 31091"
             title="Copy port 31091"
           >
             <mat-icon>content_copy</mat-icon>
           </button>
         </div>
-        <div class="flex items-center text-sm text-gray-600">
+        <div class="flex items-center space-x-2 text-sm text-gray-600">
           <label>31092</label>
           <button
             mat-icon-button
             (click)="copy('31092')"
-            class="text-gray-500 hover:text-gray-700 ml-2"
+            class="text-gray-500 hover:text-gray-700"
             aria-label="Copy port 31092"
             title="Copy port 31092"
           >
